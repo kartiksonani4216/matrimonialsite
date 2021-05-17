@@ -164,12 +164,12 @@ if($r12=mysqli_query($conn,$q12))
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
+            <!-- <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
               <i class="material-icons">image</i>
               <p> Pages
                 <b class="caret"></b>
               </p>
-            </a>
+            </a> -->
             <div class="collapse" id="pagesExamples">
               <ul class="nav">
                 <li class="nav-item ">
