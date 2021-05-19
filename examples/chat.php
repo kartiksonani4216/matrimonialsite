@@ -326,7 +326,9 @@ $('#action_menu_btn').click(function(){
 						<?php
 						     $q1="select * from user_registration1 where uid!='$cid' and gender!='$gender' LIMIT 0,$nrow";
 								 if($r1=mysqli_query($conn,$q1))
-								 {
+								 { 
+                     
+						 		
 									 while($num1=mysqli_fetch_assoc($r1))
 									 {
 										echo '

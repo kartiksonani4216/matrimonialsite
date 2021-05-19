@@ -14,6 +14,7 @@ if(isset($_POST['view']))
         header("location:user_find_partner.php?uid=$vid");
        }
     }
+ 
 
 ?>
 <!DOCTYPE html>

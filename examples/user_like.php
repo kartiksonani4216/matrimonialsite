@@ -1,47 +1,23 @@
 <?php
+
 include 'conn.php';
 session_start();
-$id=$_SESSION['uid'];
-$follow=0;
- $q15="select * from user_request where ruid='$id' and status='accept'";
- if($r15=mysqli_query($conn,$q15))
- {
-  $follow=mysqli_num_rows($r15);
+$uid=$_SESSION['uid'];
 
- }
- $following=0;
- $q16="select * from user_request where uid='$id' and status='accept'";
- if($r16=mysqli_query($conn,$q16))
-{
-  $following=mysqli_num_rows($r16);
-}
-$visit=0;
-$q12="select * from visit_profile where vuid='$id'";
-if($r12=mysqli_query($conn,$q12))
-{
-  $visit=mysqli_num_rows($r12);
-} 
-$like=0;
-$q40="select * from user_like_photo where rlid='$id'";
-if($r40=mysqli_query($conn,$q40))
-{
-  $like=mysqli_num_rows($r40);
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:25 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/components/notifications.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:31 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon2.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Bridal Dashboard 
+    Material Dashboard PRO by Creative Tim
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->
@@ -53,25 +29,25 @@ if($r40=mysqli_query($conn,$q40))
   <!-- Schema.org markup for Google+ -->
   <meta itemprop="name" content="Material Dashboard PRO by Creative Tim">
   <meta itemprop="description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
-  <meta itemprop="image" content="../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta itemprop="image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="product">
   <meta name="twitter:site" content="@creativetim">
   <meta name="twitter:title" content="Material Dashboard PRO by Creative Tim">
   <meta name="twitter:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
   <meta name="twitter:creator" content="@creativetim">
-  <meta name="twitter:image" content="../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta name="twitter:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Open Graph data -->
   <meta property="fb:app_id" content="655968634437471">
   <meta property="og:title" content="Material Dashboard PRO by Creative Tim" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="dashboard.html" />
-  <meta property="og:image" content="../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
+  <meta property="og:url" content="../dashboard.html" />
+  <meta property="og:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
   <meta property="og:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design." />
   <meta property="og:site_name" content="Creative Tim" />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.min6c54.css?v=2.2.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -89,7 +65,7 @@ if($r40=mysqli_query($conn,$q40))
         dl = l != 'dataLayer' ? '&l=' + l : '';
       j.async = true;
       j.src =
-        '../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
   </script>
@@ -102,230 +78,79 @@ if($r40=mysqli_query($conn,$q40))
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div class="wrapper ">
-  <?php 
-if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']))
-  {
-      include "user_sidebar.php";
-  } 
-  else
-  {
-    
-    header("location:user/user_login.php");
-  }
- ?>
+     <?php 
+          include 'user_sidebar.php';
+     ?>
     <div class="main-panel">
       <!-- Navbar -->
        <?php
-            include 'header.php';
+             include 'header.php';
        ?>
       <!-- End Navbar -->
       <div class="content">
-        <div class="content">
-          <div class="container-fluid">
+        <div class="container-fluid">
+        
+          <div class="row"><center>
+            <div class="col-md-10">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title"><b><font color="red">Like Notification</font></b></h4>
+                </div>
+                <div class="card-body">
+                   <?php
+                          $q12="select * from user_like_photo where rlid='$uid' order by stamp desc";
+                          if($r12=mysqli_query($conn,$q12))
+                          {
+                              while($num12=mysqli_fetch_assoc($r12))
+                              {
+                                   $vuid=$num12['uid'];
+                                   $pid=$num12['pid'];
+                                   $q13="select * from user_registration1 where uid='$vuid'";
+                                   if($r13=mysqli_query($conn,$q13))
+                                   {
+                                       while($num13=mysqli_fetch_assoc($r13))
+                                       {
+                                         $vname=$num13['fname'];
+                                       }
+                                   }
+                                   $q14="select * from user_album where pid='$pid'";
+                                   if($r14=mysqli_query($conn,$q14))
+                                   {
+                                       while($num14=mysqli_fetch_assoc($r14))
+                                       {
+                                           $img=$num14['img'];
+                                       }
+                                   }
+                                   
+                                   echo ' <div class="alert alert-info alert-with-icon" data-notify="container">
+                                    <i class="material-icons" data-notify="icon"><font color="red">notifications</font></i> 
+                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                     <i class="material-icons">close</i>
+                                   </button>
+                                   <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                                  <a href="images/album/'.$img.'" target="blank"> <span data-notify="message">'.$vname.'Like Your Photo.If Your Are Intrested Please Go To The Find Matches And Visit '.$vname.' Profile.You Can Also Chat With '.$vname.'.</span></a>
+                                 </div>';
+                              
+                              }
+                          }
+                       
+                   ?>
+                 
+                 
+                </div>
+              </div>
+            </div></center>
             
-          
-            <div class="row">
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-danger card-header-icon">
-                    <div class="card-icon">
-                    <a href="user_follower.php"><font color="white">
-                      <i class="material-icons">person</i></font>
-                      </a>
-                    </div>
-                    <p class="card-category">Followers  </p>
-                    <h3 class="card-title"><?php echo $follow ;?></h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <i class="material-icons text-danger">star</i>
-                      <a>Get More Followers...</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-rose card-header-icon">
-                    <div class="card-icon">
-                    <a href="user_following.php"><font color="white">
-                      <i class="material-icons">person</i></font>
-                      </a>
-                    </div>
-                    <p class="card-category">Following</p>
-                    <h3 class="card-title"><?php echo $following?></h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <i class="material-icons">star</i> Your Following
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-warning card-header-icon">
-                    <div class="card-icon">
-                    <a href="user_like.php"><font color="yellow">
-                      <i class="material-icons">favorite</i></font></a>
-                    </div>
-                    <p class="card-category">Like</p>
-                    <h3 class="card-title"><?php echo $like?></h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <i class="material-icons">date_range</i> Last 24 Hours
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                  <div class="card-header card-header-info card-header-icon">
-                    <div class="card-icon">
-                      <i class="fa fa-twitter"></i>
-                    </div>
-                    <p class="card-category">Visit Your Profile</p>
-                    <h3 class="card-title"><?php echo $visit?></h3>
-                  </div>
-                  <div class="card-footer">
-                    <div class="stats">
-                      <i class="material-icons">update</i> Just Updated
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h3>Manage Listings</h3>
-            <br>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card card-product">
-                  <div class="card-header card-header-image" data-header-animation="true">
-                    <a href="#pablo">
-                      <img class="img" src="../assets/img/card-2.jpg">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="card-actions text-center">
-                      <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                        <i class="material-icons">build</i> Fix Header!
-                      </button>
-                      <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="View">
-                        <i class="material-icons">art_track</i>
-                      </button>
-                      <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Edit">
-                        <i class="material-icons">edit</i>
-                      </button>
-                      <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Remove">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
-                    <h4 class="card-title">
-                      <a href="#pablo">Cozy 5 Stars Apartment</a>
-                    </h4>
-                    <div class="card-description">
-                      The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="price">
-                      <h4>$899/night</h4>
-                    </div>
-                    <div class="stats">
-                      <p class="card-category"><i class="material-icons">place</i> Barcelona, Spain</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card card-product">
-                  <div class="card-header card-header-image" data-header-animation="true">
-                    <a href="#pablo">
-                      <img class="img" src="../assets/img/card-3.jpg">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="card-actions text-center">
-                      <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                        <i class="material-icons">build</i> Fix Header!
-                      </button>
-                      <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="View">
-                        <i class="material-icons">art_track</i>
-                      </button>
-                      <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Edit">
-                        <i class="material-icons">edit</i>
-                      </button>
-                      <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Remove">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
-                    <h4 class="card-title">
-                      <a href="#pablo">Office Studio</a>
-                    </h4>
-                    <div class="card-description">
-                      The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the night life in London, UK.
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="price">
-                      <h4>$1.119/night</h4>
-                    </div>
-                    <div class="stats">
-                      <p class="card-category"><i class="material-icons">place</i> London, UK</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card card-product">
-                  <div class="card-header card-header-image" data-header-animation="true">
-                    <a href="#pablo">
-                      <img class="img" src="../assets/img/card-1.jpg">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="card-actions text-center">
-                      <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                        <i class="material-icons">build</i> Fix Header!
-                      </button>
-                      <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="View">
-                        <i class="material-icons">art_track</i>
-                      </button>
-                      <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Edit">
-                        <i class="material-icons">edit</i>
-                      </button>
-                      <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Remove">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
-                    <h4 class="card-title">
-                      <a href="#pablo">Beautiful Castle</a>
-                    </h4>
-                    <div class="card-description">
-                      The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Milan.
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="price">
-                      <h4>$459/night</h4>
-                    </div>
-                    <div class="stats">
-                      <p class="card-category"><i class="material-icons">place</i> Milan, Italy</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>
        <?php
-          include 'footer.php';
-       ?>
+             include 'footer.php';
+        ?>
     </div>
   </div>
-
+  
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
@@ -356,13 +181,13 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <script src="../assets/js/plugins/nouislider.min.js"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <script src="../../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
   <script src="../assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="../../../buttons.github.io/buttons.js"></script>
+  <script async defer src="../../../../buttons.github.io/buttons.js"></script>
   <!-- Chartist JS -->
   <script src="../assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -643,7 +468,7 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s)
       }(window,
-        document, 'script', '../../../connect.facebook.net/en_US/fbevents.js');
+        document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
 
       try {
         fbq('init', '111649226022273');
@@ -674,7 +499,7 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
       s = b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t, s)
     }(window,
-      document, 'script', '../../../connect.facebook.net/en_US/fbevents.js');
+      document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
 
     try {
       fbq('init', '111649226022273');
@@ -689,15 +514,12 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
   </noscript>
   <script>
     $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-      md.initVectorMap();
-
+      //init DateTimePickers
+      md.initFormExtendedDatetimepickers();
     });
   </script>
 </body>
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:25 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/components/notifications.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:31 GMT -->
 </html>

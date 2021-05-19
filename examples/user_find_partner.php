@@ -40,7 +40,7 @@ if(isset($_POST['view']))
     }
   }  
   $vid=$_SESSION['uid'];
-  $q213="select * from user_request where uid='$vid' and ruid='$uid'";
+  $q213="select * from user_request where uid='$vid' and ruid='$uid' or ruid='$vid' and uid='$uid'";
    if($r213=mysqli_query($conn,$q213))
    {
        while($num30=mysqli_fetch_assoc($r213))
@@ -61,7 +61,15 @@ if(isset($_POST['view']))
   }
   if(isset($_POST['goback']))
   {
-          header("location:dashboard.php");
+          header("location:findmatch.php");
+  }
+  if(isset($_POST['viewprofile']))
+  {
+      header("location:user_partner_profile.php?uid=$uid");
+  }
+  if(isset($_POST['viewphoto']))
+  {
+      header("location:user_partner_gallery.php?uid=$uid");
   }
 ?>
 
@@ -238,14 +246,20 @@ if(isset($_POST['view']))
                                         <div class="card-body">
                                          <form method="post">
                                              <?php
-                                                    if($status != 'request')
+                                                    if($status == 'request')
                                                     {
-                                       echo ' <button class="btn btn-info" type="submit" name="request">Request</button>';
+                                       echo '<button class="btn btn-danger" type="submit" name="remove">Remove</button>';
                                        
+                                                    }
+                                                    elseif ($status == 'accept') {
+                                       echo ' <button class="btn btn-info" type="submit" name="viewprofile">View Profile</button><br><br>';
+                                       echo ' <button class="btn btn-Success" type="submit" name="viewphoto">View Gallery  </button><br><br>';
+
+                                                        
                                                     }
                                                     else{
                                         
-                                             echo '<button class="btn btn-danger" type="submit" name="remove">Remove</button>';
+                                       echo ' <button class="btn btn-info" type="submit" name="request">Request</button>';
                                                         
                                                     }
                                              ?>
