@@ -3,123 +3,40 @@
   include '../conn.php';
   $error=FALSE;
   $msg=FALSE;
-  if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']))
-  {
-    $uid1=$_SESSION['uid'];
-    $q1="select * from user_registration1 where uid='$uid1'  ";
-    if($r1=mysqli_query($conn,$q1))
-    {
-      while($num1=mysqli_fetch_assoc($r1))
-      {
-        $action=$num1['action'];
-        if($action == 1)
-        {
-          header("location:user_register1.php");
-
-        }
-        if($action == 2)
-        {
-          header("location:user_register2.php");
-
-        }
-
-        if($action == 3)
-        {
-          header("location:user_register3.php");
-
-        }
-        if($action == 4)
-        {
-          header("location:user_register4.php");
-
-        }
-        if($action == 5)
-        {
-          header("location:user_register5.php");
-
-        }
-        if($action == 6)
-        {
-          header("location:user_register6.php");
-
-        }
-        if($action == 7)
-        {
-          header("location:../dashboard.php");
-
-        }
-      }
-    }
-  }
+  if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
+   {
+     header("location:admin_dashboard.php");
+   }
   if(isset($_POST['submit']))
   {
-    $email=$_POST['email'];
-    $pass=$_POST['pass'];
-    $q1="select * from user_registration1 where email='$email'";
-    if($r1=mysqli_query($conn,$q1))
-    {
-      $n1=mysqli_num_rows($r1);
-      if($n1==1)
+      $email=$_POST['email'];
+      $pass=$_POST['pass'];
+      $q10="select * from admin_login where aemail='$email' and apass='$pass'";
+      if($r10=mysqli_query($conn,$q10))
       {
-        while($n2=mysqli_fetch_assoc($r1))
+        $n1=mysqli_num_rows($r10);
+        if($n1 == 1)
         {
-          if(password_verify($pass,$n2['pass']))
+          while($num10=mysqli_fetch_assoc($r10))
           {
-              $uid=$n2['uid'];
-              $_SESSION['uid']=$n2['uid'];
-              $_SESSION['fname']=$n2['fname'];
-              $_SESSION['email']=$n2['email'];
-              $action=$n2['action'];
-              if($action == 1)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register1.php");
-              }
-              if($action == 2)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register2.php");
-              }
-              if($action == 3)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register3.php");
-              }
-              if($action == 4)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register4.php");
-              }
-              if($action == 5)
-              {
-                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". " Already Complete This Session....Go To Home Page";
-                  header("refresh:2;url=user_register5.php");
-              }
-              if($action == 6)
-              {
-                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". " Already Complete This Session....Go To Home Page";
-                  header("refresh:2;url=user_register6.php");
-              }
-              if($action == 7)
-              {
-                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". " Already Complete This Session....Go To Home Page";
-                  header("refresh:2;url=../dashboard.php");
-              }
-            
-           
-          }
-          else
-          {
-            $error="Password Does Not Match .....Please Enter Correct Password....";
+              $_SESSION['aid']=$num10['aid'];
+              $_SESSION['aname']=$num10['aname'];
+              $_SESSION['aemail']=$num10['aemail'];
+              $_SESSION['aimg']=$num10['aimg'];
+              $msg="Admin Login SuccessFully ......!";
+               header("refresh:2;url=admin_dashboard.php");
           }
         }
+        else
+        {
+          $error="Email Or Password Doesn't Match Plese Try Again ";
+        }
+           
       }
-      else
-      {
-        $error="Provide Email Does Not Exist....Please Try Again....";
-      }
-    }
   }
+
+
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,7 +53,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Bridal User Login
+    Bridal Admin Login
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->
@@ -211,7 +128,7 @@ if($error)
   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
     <div class="container">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="javascript:;">Login Page</a>
+        <a class="navbar-brand" href="javascript:;">Admin Login</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
@@ -222,14 +139,9 @@ if($error)
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
          
-          <li class="nav-item ">
-            <a href="user_register.php" class="nav-link">
-              <i class="material-icons">person_add</i>
-              Register
-            </a>
-          </li>
+         
           <li class="nav-item  active ">
-            <a href="login.html" class="nav-link">
+            <a href="admin_login.php" class="nav-link">
               <i class="material-icons">fingerprint</i>
               Login
             </a>

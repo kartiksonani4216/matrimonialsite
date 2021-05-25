@@ -1,142 +1,21 @@
 <?php
-  session_start();
-  include '../conn.php';
-  $error=FALSE;
-  $msg=FALSE;
-  if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']))
-  {
-    $uid1=$_SESSION['uid'];
-    $q1="select * from user_registration1 where uid='$uid1'  ";
-    if($r1=mysqli_query($conn,$q1))
-    {
-      while($num1=mysqli_fetch_assoc($r1))
-      {
-        $action=$num1['action'];
-        if($action == 1)
-        {
-          header("location:user_register1.php");
+include '../conn.php';
+session_start();    
 
-        }
-        if($action == 2)
-        {
-          header("location:user_register2.php");
-
-        }
-
-        if($action == 3)
-        {
-          header("location:user_register3.php");
-
-        }
-        if($action == 4)
-        {
-          header("location:user_register4.php");
-
-        }
-        if($action == 5)
-        {
-          header("location:user_register5.php");
-
-        }
-        if($action == 6)
-        {
-          header("location:user_register6.php");
-
-        }
-        if($action == 7)
-        {
-          header("location:../dashboard.php");
-
-        }
-      }
-    }
-  }
-  if(isset($_POST['submit']))
-  {
-    $email=$_POST['email'];
-    $pass=$_POST['pass'];
-    $q1="select * from user_registration1 where email='$email'";
-    if($r1=mysqli_query($conn,$q1))
-    {
-      $n1=mysqli_num_rows($r1);
-      if($n1==1)
-      {
-        while($n2=mysqli_fetch_assoc($r1))
-        {
-          if(password_verify($pass,$n2['pass']))
-          {
-              $uid=$n2['uid'];
-              $_SESSION['uid']=$n2['uid'];
-              $_SESSION['fname']=$n2['fname'];
-              $_SESSION['email']=$n2['email'];
-              $action=$n2['action'];
-              if($action == 1)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register1.php");
-              }
-              if($action == 2)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register2.php");
-              }
-              if($action == 3)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register3.php");
-              }
-              if($action == 4)
-              {
-                $msg="<b><u>". $n2['fname'] ."</u></b>". " Login SuccesFully....Please Wait 3 Second.....";
-                header("refresh:3;url=user_register4.php");
-              }
-              if($action == 5)
-              {
-                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". " Already Complete This Session....Go To Home Page";
-                  header("refresh:2;url=user_register5.php");
-              }
-              if($action == 6)
-              {
-                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". " Already Complete This Session....Go To Home Page";
-                  header("refresh:2;url=user_register6.php");
-              }
-              if($action == 7)
-              {
-                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". " Already Complete This Session....Go To Home Page";
-                  header("refresh:2;url=../dashboard.php");
-              }
-            
-           
-          }
-          else
-          {
-            $error="Password Does Not Match .....Please Enter Correct Password....";
-          }
-        }
-      }
-      else
-      {
-        $error="Provide Email Does Not Exist....Please Try Again....";
-      }
-    }
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:27 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/regular.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:34 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../../assets/img/favicon2.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.common.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
+  <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Bridal User Login
+    Material Dashboard PRO by Creative Tim
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->
@@ -191,123 +70,140 @@
   <!-- End Google Tag Manager -->
 </head>
 
-<body class="off-canvas-sidebar">
-<?php
-
-if($msg)
-{
-  echo '<script>swal("Well Done!", "'.$msg.'", "success");</script>';  
-}
-if($error)
-{
-  echo '<script>swal("Oops!", "'.$error.'", "error");</script>';
-}
-?>
+<body class="">
   <!-- Extra details for Live View on GitHub Pages -->
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
-    <div class="container">
-      <div class="navbar-wrapper">
-        <a class="navbar-brand" href="javascript:;">Login Page</a>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-        <span class="navbar-toggler-icon icon-bar"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-         
-          <li class="nav-item ">
-            <a href="user_register.php" class="nav-link">
-              <i class="material-icons">person_add</i>
-              Register
-            </a>
-          </li>
-          <li class="nav-item  active ">
-            <a href="login.html" class="nav-link">
-              <i class="material-icons">fingerprint</i>
-              Login
-            </a>
-          </li>
-         
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- End Navbar -->
-  <div class="wrapper wrapper-full-page">
-    <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
-      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-            <form class="form" method="post">
-              <div class="card card-login card-hidden">
-                <div class="card-header card-header-rose text-center">
-                  <h4 class="card-title">Login</h4>
-                  <div class="social-line">
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                      <i class="fa fa-facebook-square"></i>
-                    </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                      <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                      <i class="fa fa-google-plus"></i>
-                    </a>
+  <div class="wrapper ">
+      <?php
+           include 'admin_sidebar.php';
+      ?>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <?php
+      include 'admin_header.php';
+      
+      ?>
+      <!-- End Navbar -->
+      <div class="content" style="background-color:black">
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  
+              
+              <div class="col-md-12" style="background-color:black">
+                <div class="card" style="background-color:yellow;">
+                  <div class="card-header card-header-icon card-header-rose">
+                    <div class="card-icon">
+                      <i class="material-icons">person</i>
+                    </div>
+                    <h4 class="card-title "> Active User</h4>
+                  </div>
+                  <div class="card-body table-full-width table-hover">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="">
+                          <th>
+                            ID
+                          </th>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Email
+                          </th>
+                          <th>
+                            Dob
+                          </th>
+                          <th>
+                            Action
+                          </th>
+                        </thead>
+                        <?php
+                              $q20="select * from user_registration1 where account='active'";
+                              if($r20=mysqli_query($conn,$q20))
+                              {
+                                  while($num20=mysqli_fetch_assoc($r20))
+                                  {
+                                    echo ' <tbody>
+                                    <tr class="table-danger">
+                                  
+                                      <td>
+                                        '.$num20['uid'].'
+                                      </td>
+                                      <td>
+                                        '.$num20['fname'].'
+                                      </td>
+                                      <td>
+                                        '.$num20['email'].'
+                                      </td>
+                                      <td>
+                                        '.$num20['dob'].'
+                                      </td>
+                                      <td>
+                                      <a href="admin_fullprofile.php?uid='.$num20['uid'].'">
+                                      <button type="button" rel="tooltip" class="btn btn-info btn-round">
+                                              <i class="material-icons">person</i>
+                                       </button>
+                                       </a>
+                                      </td>
+                                   
+                                    </tr>
+                             
+                                  </tbody>';
+                                  }
+                              }
+                        ?>
+                       
+                      </table>
+                    </div>
                   </div>
                 </div>
-                <div class="card-body ">
-                  <p class="card-description text-center">Or Be Classical</p>
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">face</i>
-                        </span>
-                      </div>
-                      <input type="text" name="email" class="form-control" placeholder="Email Address..." required>
-                    </div>
-                  </span>
-                 
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <input type="password" class="form-control" name="pass" placeholder="Password..." required>
-                    </div>
-                  </span>
-                </div><br>
-                <div class="text-center">
-                      <div class="ml-auto">
-                      <button type="submit" class="btn btn-info btn-round btn-fill " name="submit">
-                      <i class="material-icons"></i>  <b>Submit</b>
-                  </button>
-                    </div>
-                    </div><br><br>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-       <?php
-           include '../footer.php';
-       ?>
+        
     </div>
   </div>
+  
   <!--   Core JS Files   -->
   <script src="../../assets/js/core/jquery.min.js"></script>
   <script src="../../assets/js/core/popper.min.js"></script>
   <script src="../../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <!-- Plugin for the momentJs  -->
+  <script src="../../assets/js/plugins/moment.min.js"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="../../assets/js/plugins/sweetalert2.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../../assets/js/plugins/jquery.validate.min.js"></script>
+  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="../../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+  <script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="../../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="../../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+  <script src="../../assets/js/plugins/fullcalendar.min.js"></script>
+  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+  <script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../../assets/js/plugins/nouislider.min.js"></script>
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+  <script src="../../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <!-- Library for adding dinamically elements -->
+  <script src="../../assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
@@ -636,17 +532,8 @@ if($error)
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />
   </noscript>
-  <script>
-    $(document).ready(function() {
-      md.checkFullPageBackgroundImage();
-      setTimeout(function() {
-        // after 1000 ms we add the class animated to the login/register card
-        $('.card').removeClass('card-hidden');
-      }, 700);
-    });
-  </script>
 </body>
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:28 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/regular.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:34 GMT -->
 </html>

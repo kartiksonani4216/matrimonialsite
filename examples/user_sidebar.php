@@ -124,7 +124,7 @@ if($r12=mysqli_query($conn,$q12))
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="user_like.php">
+            <a class="nav-link" href="user_block.php">
               <i class="material-icons">block</i>
               <p> Block User </p>
             </a>
@@ -185,8 +185,15 @@ if($r12=mysqli_query($conn,$q12))
                   <span class="sidebar-mini"> VF </span>
                   <span class="sidebar-normal"> View Following </span>
                 </a>
-              </li>            
+              </li>  
+                       
             </ul>
+            <li class="nav-item ">
+            <a class="nav-link" href="contact_us.php">
+              <i class="material-icons">phone</i>
+              <p> Contact Us </p>
+            </a>
+          </li> 
           </div>
         </li>
         </ul>

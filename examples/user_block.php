@@ -6,8 +6,7 @@
    $id=$_SESSION['uid'];
    $rid="";
    $q11="select * from user_registration1 where uid='".$_SESSION['uid']."'";
-   $bytes = random_bytes(3);
-    $new=bin2hex($bytes);
+   
    if($r11=mysqli_query($conn,$q11))
    {
        while($n11=mysqli_fetch_assoc($r11))
@@ -15,15 +14,7 @@
            $gender=$n11['gender'];
        }
    }
-   if(isset($_POST['view']))
-   {
-       $uid=$_POST['uid'];
-       $q12="insert into visit_profile values('$new','$id','$uname','$uid',current_timestamp())";
-       if($r12=mysqli_query($conn,$q12))
-       {
-        header("location:user_find_partner.php?uid=$uid");
-       }
-    }
+
     $q12="select * from user_request where ruid='$id'";
     if($r12=mysqli_query($conn,$q12))
     {
@@ -34,33 +25,9 @@
         $rid=$num12['rid'];
       }
     }
-    $bytes = random_bytes(3);
-    $new=bin2hex($bytes);
-    if(isset($_POST['accept']))
-    {
-      $requestid=$_POST['rid'];
-      $q22="update user_request set status='accept' where rid='$requestid'";
-      if($r22=mysqli_query($conn,$q22))
-      {
-        header("loaction:user_request.php");
-      
-      }
-      else{
-        header("location:error.php");
-      }
-    }
-    if(isset($_POST['remove']))
-    {
-      $requestid=$_POST['rid'];
-      $q22="update user_request set status='decline' where rid='$requestid'";
-      if($r22=mysqli_query($conn,$q22))
-      {
-        header("loaction:user_request.php");
-      }
-      else{
-        header("location:error.php");
-      }
-    }
+ 
+  
+   
     if(isset($_POST['block']))
     {
       $ruid=$_POST['bid'];
@@ -69,6 +36,24 @@
       {
         header("location:user_following.php");
       }
+    }
+    if(isset($_POST['following']))
+    {
+        $fid=$_POST['fid'];
+        $q22="update user_request set status='accept' where uid='$id' and ruid='$fid'";
+        if($r22=mysqli_query($conn,$q22))
+        {
+           header("location:user_block.php");
+        }
+    }
+    if(isset($_POST['follower']))
+    {
+        $foid=$_POST['foid'];
+        $q33="update user_request set status='accept' where uid='$foid' and ruid='$id'";
+        if($r33=mysqli_query($conn,$q33))
+        {
+            header("location:user_block.php");
+        }
     }
 
 
@@ -179,7 +164,7 @@ h1 {
   <body>
           <div class="content-wrapper">
             <div class="page-header">
-            <h1 class="gradient-text">Your Following</h1>
+            <h1 class="gradient-text">Block User</h1>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <a href="dashboard.php"> <li> <p><button class="btn btn-danger">Go Back</button></p></li></a>
@@ -196,10 +181,10 @@ h1 {
                         <div class="row portfolio-grid">
                         <?php 
                         $following=0;
-                            $q15="select * from user_request where uid='$id' and status='accept'";
+                            $q15="select * from user_request where uid='$id' and status='block'  ";
                             if($r15=mysqli_query($conn,$q15))
                             {
-                                $following=mysqli_num_rows($r15);
+                               
                               while($n1=mysqli_fetch_assoc($r15))
                               {
                                   
@@ -218,8 +203,8 @@ h1 {
                                             <form method="post">
                                             <input type="hidden" value="'.$n1['rid'].'" name="rid"/>
                                             <p>
-                                            <input type="hidden" name="bid" value="'.$reqid.'">
-                                            <button name="block" type="submit" class="btn btn-danger mr-2">Block User</button></p>
+                                            <input type="hidden" name="fid" value="'.$reqid.'">
+                                            <button name="following" type="submit" class="btn btn-success mr-2">UnBlock User</button></p>
                                             </p>
                                             </form>
                                           </figcaption>
@@ -227,13 +212,42 @@ h1 {
                                       </div>                      ';
                                     }
                                 }
-                                else{
-                                  echo "now losee";
-                                }
+                               
                               }
                             }
-                            else{
-                              echo "Now Free";
+                            $q15="select * from user_request where ruid='$id' and status='block'  ";
+                            if($r15=mysqli_query($conn,$q15))
+                            {
+                               
+                              while($n1=mysqli_fetch_assoc($r15))
+                              {
+                                  
+                                $reqid=$n1['uid'];
+                                $q1="select * from user_registration1 where uid='$reqid'";
+                                if($r1=mysqli_query($conn,$q1))
+                                {
+                                    while($num=mysqli_fetch_assoc($r1))
+                                    {
+                                        echo '            
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                                        <figure class="effect-text-in">
+                                        <a href="images/user/'.$num['img'].'" target="blank"><img src="images/user/'.$num['img'].'"  alt="image" style="height:400px;" />
+                                            <figcaption>
+                                            <h4><font color="white">'.$num['fname'].'</font></h4>
+                                            <form method="post">
+                                            <input type="hidden" value="'.$n1['rid'].'" name="rid"/>
+                                            <p>
+                                            <input type="hidden" name="foid" value="'.$reqid.'">
+                                            <button name="follower" type="submit" class="btn btn-success mr-2">Unblock User</button></p>
+                                            </p>
+                                            </form>
+                                          </figcaption>
+                                        </figure>
+                                      </div>                      ';
+                                    }
+                                }
+                               
+                              }
                             }
                             
                         ?>

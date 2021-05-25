@@ -1,32 +1,39 @@
 <?php
-include 'conn.php';
+include '../conn.php';
 session_start();
-$id=$_SESSION['uid'];
-$follow=0;
- $q15="select * from user_request where ruid='$id' and status='accept'";
- if($r15=mysqli_query($conn,$q15))
- {
-  $follow=mysqli_num_rows($r15);
-
- }
- $following=0;
- $q16="select * from user_request where uid='$id' and status='accept'";
- if($r16=mysqli_query($conn,$q16))
+$id=$_SESSION['aid'];
+$anmae=$_SESSION['aname'];
+$aemail=$_SESSION['aemail'];
+$user=0;
+$story=0;
+$contact=0;
+$blocked=0;
+$active=0;
+$abuse=0;
+$q11="select * from user_registration1";
+if($r11=mysqli_query($conn,$q11))
 {
-  $following=mysqli_num_rows($r16);
+    $user=mysqli_num_rows($r11);
 }
-$visit=0;
-$q12="select * from visit_profile where vuid='$id'";
+$q12="select * from success_story";
 if($r12=mysqli_query($conn,$q12))
 {
-  $visit=mysqli_num_rows($r12);
-} 
-$like=0;
-$q40="select * from user_like_photo where rlid='$id'";
-if($r40=mysqli_query($conn,$q40))
+    $story=mysqli_num_rows($r12);
+}
+$q13="select * from contact_us";
+if($r13=mysqli_query($conn,$q13))
 {
-  $like=mysqli_num_rows($r40);
-
+    $contact=mysqli_num_rows($r13);
+}
+$q15="select * from user_registration1 where account='block'";
+if($r15=mysqli_query($conn,$q15))
+{
+  $blocked=mysqli_num_rows($r15);
+}
+$q15="select * from user_registration1 where account='active'";
+if($r15=mysqli_query($conn,$q15))
+{
+  $active=mysqli_num_rows($r15);
 }
 ?>
 <!DOCTYPE html>
@@ -37,8 +44,8 @@ if($r40=mysqli_query($conn,$q40))
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon2.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Bridal Dashboard 
@@ -73,9 +80,9 @@ if($r40=mysqli_query($conn,$q40))
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="../assets/css/material-dashboard.min6c54.css?v=2.2.2" rel="stylesheet" />
+  <link href="../../assets/css/material-dashboard.min6c54.css?v=2.2.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="../../assets/demo/demo.css" rel="stylesheet" />
   <!-- Google Tag Manager -->
   <script>
     (function(w, d, s, l, i) {
@@ -103,55 +110,58 @@ if($r40=mysqli_query($conn,$q40))
   <!-- End Google Tag Manager (noscript) -->
   <div class="wrapper ">
   <?php 
-if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']))
+if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']))
   {
-      include "user_sidebar.php";
+      include "admin_sidebar.php";
   } 
   else
   {
     
-    header("location:user/user_login.php");
+    header("location:admin/admin_login.php");
   }
  ?>
     <div class="main-panel">
       <!-- Navbar -->
        <?php
-            include 'header.php';
+            include 'admin_header.php';
        ?>
       <!-- End Navbar -->
       <div class="content">
         <div class="content">
-          <div class="container-fluid"> 
+          <div class="container-fluid">
+            
+          
             <div class="row">
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                  <div class="card-header card-header-danger card-header-icon">
+                  <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
-                    <a href="user_follower.php"><font color="white">
+                    <a href="user_follower.php"><font color="yellow">
                       <i class="material-icons">person</i></font>
                       </a>
                     </div>
-                    <p class="card-category">Followers  </p>
-                    <h3 class="card-title"><?php echo $follow ;?></h3>
+                    <p class="card-category">Total User  </p>
+                    <h3 class="card-title"><?php echo $user?></h3>
                   </div>
+                  
                   <div class="card-footer">
                     <div class="stats">
                       <i class="material-icons text-danger">star</i>
-                      <a>Get More Followers...</a>
+                      <a>Get More User...</a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                  <div class="card-header card-header-rose card-header-icon">
+                  <div class="card-header card-header-info card-header-icon">
                     <div class="card-icon">
-                    <a href="user_following.php"><font color="white">
+                    <a href="user_following.php"><font color="red">
                       <i class="material-icons">person</i></font>
                       </a>
                     </div>
-                    <p class="card-category">Following</p>
-                    <h3 class="card-title"><?php echo $following?></h3>
+                    <p class="card-category">Active user</p>
+                    <h3 class="card-title"><?php echo $active ;?></h3>
                   </div>
                   <div class="card-footer">
                     <div class="stats">
@@ -167,8 +177,8 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
                     <a href="user_like.php"><font color="yellow">
                       <i class="material-icons">favorite</i></font></a>
                     </div>
-                    <p class="card-category">Like</p>
-                    <h3 class="card-title"><?php echo $like?></h3>
+                    <p class="card-category">Blocked User</p>
+                    <h3 class="card-title"><?php echo $blocked?></h3>
                   </div>
                   <div class="card-footer">
                     <div class="stats">
@@ -183,8 +193,46 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
                     <div class="card-icon">
                       <a href="user_notification.php"><i class="material-icons"><font color="red">person</font></i></a>
                     </div>
-                    <p class="card-category">Visit Your Profile</p>
-                    <h3 class="card-title"><?php echo $visit?></h3>
+                    <p class="card-category">Abuse Report</p>
+                    <h3 class="card-title"><?php echo $abuse?></h3>
+                  </div>
+                  <div class="card-footer">
+                    <div class="stats">
+                      <i class="material-icons">update</i> Just Updated
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                    <a href="user_follower.php"><font color="yellow">
+                      <i class="material-icons">person</i></font>
+                      </a>
+                    </div>
+                    <p class="card-category">Contact Us  </p>
+                    <h3 class="card-title"><?php echo $contact?></h3>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <div class="stats">
+                      <i class="material-icons text-danger">star</i>
+                      <a>Get More User...</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                      <a href="user_notification.php"><i class="material-icons"><font color="red">person</font></i></a>
+                    </div>
+                    <p class="card-category">Success Stroy</p>
+                    <h3 class="card-title"><?php echo $story?></h3>
                   </div>
                   <div class="card-footer">
                     <div class="stats">
@@ -201,7 +249,7 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
                 <div class="card card-product">
                   <div class="card-header card-header-image" data-header-animation="true">
                     <a href="#pablo">
-                      <img class="img" src="../assets/img/card-2.jpg">
+                      <img class="img" src="../../assets/img/card-2.jpg">
                     </a>
                   </div>
                   <div class="card-body">
@@ -240,7 +288,7 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
                 <div class="card card-product">
                   <div class="card-header card-header-image" data-header-animation="true">
                     <a href="#pablo">
-                      <img class="img" src="../assets/img/card-3.jpg">
+                      <img class="img" src="../../assets/img/card-3.jpg">
                     </a>
                   </div>
                   <div class="card-body">
@@ -279,7 +327,7 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
                 <div class="card card-product">
                   <div class="card-header card-header-image" data-header-animation="true">
                     <a href="#pablo">
-                      <img class="img" src="../assets/img/card-1.jpg">
+                      <img class="img" src="../../assets/img/card-1.jpg">
                     </a>
                   </div>
                   <div class="card-body">
@@ -319,54 +367,54 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
         </div>
       </div>
        <?php
-          include 'footer.php';
+          include 'admin_footer.php';
        ?>
     </div>
   </div>
 
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../../assets/js/core/jquery.min.js"></script>
+  <script src="../../assets/js/core/popper.min.js"></script>
+  <script src="../../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <!-- Plugin for the momentJs  -->
-  <script src="../assets/js/plugins/moment.min.js"></script>
+  <script src="../../assets/js/plugins/moment.min.js"></script>
   <!--  Plugin for Sweet Alert -->
-  <script src="../assets/js/plugins/sweetalert2.js"></script>
+  <script src="../../assets/js/plugins/sweetalert2.js"></script>
   <!-- Forms Validations Plugin -->
-  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <script src="../../assets/js/plugins/jquery.validate.min.js"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
   <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
   <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-tagsinput.js"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <script src="../../assets/js/plugins/jasny-bootstrap.min.js"></script>
   <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+  <script src="../../assets/js/plugins/fullcalendar.min.js"></script>
   <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+  <script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js"></script>
+  <script src="../../assets/js/plugins/nouislider.min.js"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
   <script src="../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
-  <script src="../assets/js/plugins/arrive.min.js"></script>
+  <script src="../../assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="../../../buttons.github.io/buttons.js"></script>
   <!-- Chartist JS -->
-  <script src="../assets/js/plugins/chartist.min.js"></script>
+  <script src="../../assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.min6c54.js?v=2.2.2" type="text/javascript"></script>
+  <script src="../../assets/js/material-dashboard.min6c54.js?v=2.2.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script>
     $(document).ready(function() {
@@ -567,7 +615,7 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
     });
   </script>
   <!-- Sharrre libray -->
-  <script src="../assets/demo/jquery.sharrre.js"></script>
+  <script src="../../assets/demo/jquery.sharrre.js"></script>
   <script>
     $(document).ready(function() {
 
