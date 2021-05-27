@@ -131,7 +131,7 @@
                                     <tr>
                                       <td>
                                         <div class="img-container">
-                                          <img src="../images/album/'.$num12['img'].'" alt="...">
+                                         <a href="../images/album/'.$num12['img'].'" target="blank"> <img src="../images/album/'.$num12['img'].'" alt="..."></a>
                                         </div>
                                       </td>
                                       <td class="td-name">

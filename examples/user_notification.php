@@ -129,7 +129,7 @@ if(isset($_POST['view']))
                       </thead>
                          <?php
                                 $vuid="";
-                                $q1="select * from visit_profile where vuid='$uid'";
+                                $q1="select * from visit_profile where vuid='$uid' order by stamp desc";
                                 if($r1=mysqli_query($conn,$q1))
                                 {
                                     while($num=mysqli_fetch_assoc($r1))

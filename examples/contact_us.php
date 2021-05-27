@@ -112,7 +112,7 @@ if($error)
                   <li class="breadcrumb-item active" aria-current="page"><a href="dashboard.php"><font color="black">Go Back</font></a></li>
                 </ol>
             <div class="contact-image">
-                <img src="https://image.ibb.co/kUagtU/rocket_contact.png    " alt="rocket_contact"/>
+                <img src="../assets/img/contact_us.jpg" alt="rocket_contact"/>
             </div>
             
             

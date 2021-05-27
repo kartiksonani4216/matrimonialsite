@@ -98,20 +98,15 @@ $aimg=$_SESSION['aimg'];
             </ul>
           </div>
         </li>
+          
           <li class="nav-item ">
-            <a class="nav-link" href="user_query.php">
-              <i class="material-icons">star</i>
-              <p> Feedback </p>
-            </a>
-          </li>  
-          <li class="nav-item ">
-            <a class="nav-link" href="user_query.php">
+            <a class="nav-link" href="admin_abuse_report.php">
               <i class="material-icons">star</i>
               <p> Abuse Report </p>
             </a>
           </li>      
           <li class="nav-item ">
-            <a class="nav-link" href="user_query.php">
+            <a class="nav-link" href="generate_fakeuser.php">
               <i class="material-icons">people</i>
               <p> Generate Fake Users </p>
             </a>

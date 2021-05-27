@@ -1,18 +1,20 @@
 <?php
-include '../conn.php';
-session_start();    
+
+ include '../conn.php';
+ session_start();
+
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/regular.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:34 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/extended.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:34 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Material Dashboard PRO by Creative Tim
@@ -27,25 +29,25 @@ session_start();
   <!-- Schema.org markup for Google+ -->
   <meta itemprop="name" content="Material Dashboard PRO by Creative Tim">
   <meta itemprop="description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
-  <meta itemprop="image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta itemprop="image" content="../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="product">
   <meta name="twitter:site" content="@creativetim">
   <meta name="twitter:title" content="Material Dashboard PRO by Creative Tim">
   <meta name="twitter:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
   <meta name="twitter:creator" content="@creativetim">
-  <meta name="twitter:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta name="twitter:image" content="../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Open Graph data -->
   <meta property="fb:app_id" content="655968634437471">
   <meta property="og:title" content="Material Dashboard PRO by Creative Tim" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="../dashboard.html" />
-  <meta property="og:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
+  <meta property="og:image" content="../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
   <meta property="og:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design." />
   <meta property="og:site_name" content="Creative Tim" />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="../../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../../assets/css/material-dashboard.min6c54.css?v=2.2.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -63,7 +65,7 @@ session_start();
         dl = l != 'dataLayer' ? '&l=' + l : '';
       j.async = true;
       j.src =
-        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+        '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
   </script>
@@ -76,103 +78,85 @@ session_start();
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div class="wrapper ">
-      <?php
-           include 'admin_sidebar.php';
-      ?>
+     <?php
+      include 'admin_sidebar.php';
+     
+     ?>
     <div class="main-panel">
       <!-- Navbar -->
-      <?php
-      include 'admin_header.php';
-      
-      ?>
+       <?php
+           include 'admin_header.php';
+       ?>
       <!-- End Navbar -->
-      <div class="content" style="background-color:black;">
+      <div class="content">
         <div class="container-fluid">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card">
-                  
-              
-              <div class="col-md-12" style="background-color:black;">
-                <div class="card" style="background-color:yellow;">
-                  <div class="card-header card-header-icon card-header-rose">
-                    <div class="card-icon">
-                      <i class="material-icons">person</i>
-                    </div>
-                    <h4 class="card-title "> All User</h4>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card" style="background-color:black;">
+                <div class="card-header card-header-rose card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">people</i>
                   </div>
-                  <div class="card-body table-full-width table-hover">
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead class="">
-                          <th>
-                            ID
-                          </th>
-                          <th>
-                            Name
-                          </th>
-                          <th>
-                            Email
-                          </th>
-                          <th>
-                            Dob
-                          </th>
-                          <th>
-                            Action
-                          </th>
-                        </thead>
-                        <?php
-                              $q20="select * from user_registration1 where account='block'";
-                              if($r20=mysqli_query($conn,$q20))
-                              {
-                                  while($num20=mysqli_fetch_assoc($r20))
-                                  {
-                                    echo ' <tbody>
-                                    <tr class="table-danger">
-                                  
-                                      <td>
-                                        '.$num20['uid'].'
-                                      </td>
-                                      <td>
-                                        '.$num20['fname'].'
-                                      </td>
-                                      <td>
-                                        '.$num20['email'].'
-                                      </td>
-                                      <td>
-                                        '.$num20['dob'].'
-                                      </td>
-                                      <td>
-                                      <a href="admin_blockprofile.php?uid='.$num20['uid'].'">
-                                      <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                                              <i class="material-icons">person</i>
-                                       </button>
-                                       </a>
-                                      </td>
-                                   
-                                    </tr>
-                             
-                                  </tbody>';
-                                  }
-                              }
-                        ?>
-                       
-                      </table>
-                    </div>
+                  <h4 class="card-title"><font color="red" size="6"><b>Block User</b></font></h4>
+                </div>
+                <div class="card-body" style="background-color:black;">
+                  <div class="table-responsive">
+                   <form method="post">
+                    <table class="table" style="background-color:black;">
+                      <thead>
+                        <tr>
+                          
+                          <th class="text-center"><font color="white">Uid</font></th>
+                          <th><font color="white">Name</font></th>
+                          <th><font color="white">Mno</font></th>
+                          <th><font color="white">Dob</font></th>
+                          <th class="text-right"><font color="white">Actions</font></th>
+ 
+                        </tr>
+                      </thead>
+                      <?php
+                            $q1="select * from user_registration1 where account='block'";
+                            if($r1=mysqli_query($conn,$q1))
+                            {
+                                while($num1=mysqli_fetch_assoc($r1))
+                                {
+
+                                  echo '
+                                  <tbody>
+                                  <tr>
+                                    <td class="text-center"><font color="info">'.$num1['uid'].'</td>
+                                    <td><font color="yellow">'.$num1['fname'].'</td>
+                                    <td><font color="info">'.$num1['mno'].'</td>
+                                    <td><font color="yellow">'.$num1['dob'].'</td>
+                                    <td class="td-actions text-right">
+                                      <button type="button"  rel="tooltip" class="btn btn-info">
+                                        <i class="material-icons"><a href="admin_blockprofile.php?uid='.$num1['uid'].'"><font color="white">person</font></a></i>
+                                      </button>
+                                    </td>
+                                  </tr>         
+                                </tbody>';
+                                }
+                            }
+                      
+                      ?>
+                  
+                    </table>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
+            
+           
           </div>
         </div>
       </div>
-       
+      <?php
+          include 'admin_footer.php';
+      ?>
     </div>
-   
   </div>
- 
-  
+                            
   <!--   Core JS Files   -->
   <script src="../../assets/js/core/jquery.min.js"></script>
   <script src="../../assets/js/core/popper.min.js"></script>
@@ -203,13 +187,13 @@ session_start();
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <script src="../../assets/js/plugins/nouislider.min.js"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="../../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
   <script src="../../assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="../../../../buttons.github.io/buttons.js"></script>
+  <script async defer src="../../buttons.github.io/buttons.js"></script>
   <!-- Chartist JS -->
   <script src="../../assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -490,7 +474,7 @@ session_start();
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s)
       }(window,
-        document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
+        document, 'script', '../../connect.facebook.net/en_US/fbevents.js');
 
       try {
         fbq('init', '111649226022273');
@@ -521,7 +505,7 @@ session_start();
       s = b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t, s)
     }(window,
-      document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
+      document, 'script', '../../connect.facebook.net/en_US/fbevents.js');
 
     try {
       fbq('init', '111649226022273');
@@ -537,5 +521,5 @@ session_start();
 </body>
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/regular.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:34 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/extended.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:36 GMT -->
 </html>

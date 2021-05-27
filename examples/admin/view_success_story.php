@@ -1,250 +1,537 @@
 <?php
    include '../conn.php';
    session_start();
-   $aimg=$_SESSION['aimg'];
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
+
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/extended.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-  <title>Fresh Bootstrap Table by Creative Tim</title>
-
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-
+  <title>
+    Material Dashboard PRO by Creative Tim
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!-- Extra details for Live View on GitHub Pages -->
   <!-- Canonical SEO -->
-  <link rel="canonical" href="https://www.creative-tim.com/product/fresh-bootstrap-table"/>
-
-  <!--  Social tags    -->
-  <meta name="keywords" content="creative tim, html table, html css table, web table, freebie, free bootstrap table, bootstrap, css3 table, bootstrap table, fresh bootstrap table, frontend, modern table, responsive bootstrap table, responsive bootstrap table">
-
-  <meta name="description" content="Probably the most beautiful and complex bootstrap table you've ever seen on the internet, this bootstrap table is one of the essential plugins you will need.">
-
+  <link rel="canonical" href="https://www.creative-tim.com/product/material-dashboard-pro" />
+  <!--  Social tags      -->
+  <meta name="keywords" content="creative tim, html dashboard, html css dashboard, web dashboard, bootstrap 4 dashboard, bootstrap 4, css3 dashboard, bootstrap 4 admin, material dashboard bootstrap 4 dashboard, frontend, responsive bootstrap 4 dashboard, material design, material dashboard bootstrap 4 dashboard">
+  <meta name="description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
   <!-- Schema.org markup for Google+ -->
-  <meta itemprop="name" content="Fresh Bootstrap Table by Creative Tim">
-  <meta itemprop="description" content="Probably the most beautiful and complex bootstrap table you've ever seen on the internet, this bootstrap table is one of the essential plugins you will need.">
-
-  <meta itemprop="image" content="http://s3.amazonaws.com/creativetim_bucket/products/31/original/opt_fbt_thumbnail.jpg">
+  <meta itemprop="name" content="Material Dashboard PRO by Creative Tim">
+  <meta itemprop="description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
+  <meta itemprop="image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Twitter Card data -->
-
   <meta name="twitter:card" content="product">
   <meta name="twitter:site" content="@creativetim">
-  <meta name="twitter:title" content="Fresh Bootstrap Table by Creative Tim">
-
-  <meta name="twitter:description" content="Probably the most beautiful and complex bootstrap table you've ever seen on the internet, this bootstrap table is one of the essential plugins you will need.">
+  <meta name="twitter:title" content="Material Dashboard PRO by Creative Tim">
+  <meta name="twitter:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
   <meta name="twitter:creator" content="@creativetim">
-  <meta name="twitter:image" content="http://s3.amazonaws.com/creativetim_bucket/products/31/original/opt_fbt_thumbnail.jpg">
-  <meta name="twitter:data1" content="Fresh Bootstrap Table by Creative Tim">
-  <meta name="twitter:label1" content="Product Type">
-  <meta name="twitter:data2" content="Free">
-  <meta name="twitter:label2" content="Price">
-
+  <meta name="twitter:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Open Graph data -->
-  <meta property="og:title" content="Fresh Bootstrap Table by Creative Tim" />
+  <meta property="fb:app_id" content="655968634437471">
+  <meta property="og:title" content="Material Dashboard PRO by Creative Tim" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://wenzhixin.github.io/fresh-bootstrap-table/full-screen-table.html" />
-  <meta property="og:image" content="http://s3.amazonaws.com/creativetim_bucket/products/31/original/opt_fbt_thumbnail.jpg"/>
-  <meta property="og:description" content="Probably the most beautiful and complex bootstrap table you've ever seen on the internet, this bootstrap table is one of the essential plugins you will need." />
+  <meta property="og:url" content="../dashboard.html" />
+  <meta property="og:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
+  <meta property="og:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design." />
   <meta property="og:site_name" content="Creative Tim" />
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
-  <link href="../assets/css/fresh-bootstrap-table.css" rel="stylesheet" />
-  <link href="../assets/css/demo.css" rel="stylesheet" />
-
-  <!--   Fonts and icons   -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300" rel="stylesheet" type="text/css">
-
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.js"></script>
-
-  <!--  Just for demo purpose, do not include in your project   -->
-  <script src="../assets/js/demo/gsdk-switch.js"></script>
-  <script src="../assets/js/demo/jquery.sharrre.js"></script>
-  <script src="../assets/js/demo/demo.js"></script>
-
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="../../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="../../assets/css/material-dashboard.min6c54.css?v=2.2.2" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../../assets/demo/demo.css" rel="stylesheet" />
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
+  </script>
+  <!-- End Google Tag Manager -->
 </head>
-<body>
 
-<div class="wrapper">
-   <!--   Creative Tim Branding   -->
-  <a href="../images/admin/<?php echo $aimg?>">
-    <div class="logo-container full-screen-table-demo">
-      <div class="logo">
-        <img src="../images/admin/<?php echo $aimg?>" style="height:60px;">
+<body class="">
+  <!-- Extra details for Live View on GitHub Pages -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="wrapper ">
+    <?php  
+       include 'admin_sidebar.php';
+    ?>
+    <div class="main-panel">
+      <!-- Navbar -->
+     <?php
+         include 'admin_header.php';
+     ?>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            
+           
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">photo</i>
+                  </div>
+                  <h4 class="card-title">User Success Story</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-shopping">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Couple Photo</th>
+                          <th>uname</th>
+                          <th>Mno</th>
+                          <th class="th-description">Title</th>
+                          <th class="th-description">Action</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <?php
+                      
+                          $q12="select * from success_story order by stamp desc";
+                          if($r12=mysqli_query($conn,$q12))
+                          {
+                            $story=mysqli_num_rows($r12);
+                            if($story >= 1)
+                            {
+                              while($num12=mysqli_fetch_assoc($r12))
+                              {    
+                                 
+                                    echo '  <tbody>
+                                    <tr>
+                                      <td>
+                                        <div class="img-container">
+                                          <img src="../images/couple_photo/'.$num12['img'].'" alt="...">
+                                        </div>
+                                      </td>
+                                      <td ><font color="purple"><b>'.$num12['fname'].'<b></font></td>
+                                      <td>
+                                        '.$num12['mno'].'
+                                        <br />
+                                      </td>
+                                      <td>
+                                        '.$num12['title'].'
+                                      </td>
+                                      <td>
+                                       <button type="button" class="btn btn-success"><a href="view_story.php?sid='.$num12['sid'].'"><font color="white">View</font></a></button>
+                                       <button type="button" class="btn btn-danger"><a href="delete_story.php?sid='.$num12['sid'].'"><font color="white">Remove</font></a></button>
+                                      
+                                       </td>
+                                    </tr>
+                                  </tbody>';
+                              }
+                            }
+                            else{
+                              echo '
+                              <tbody>
+                              <tr>
+                             <td colspan="5" style="text-align:center;vartical-align:middle;">No Data Found<td>
+                              <tr>
+                              </tbody>';
+                            }
+                             
+                          }
+                      ?>
+                    
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="brand">
-        Success Story
-      </div>
+      
     </div>
-  </a>
-
-  <div class="fresh-table full-color-blue full-screen-table">
-  <!--
-    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
-    Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
-  -->
-    <table id="fresh-table" class="table">
-      <thead>
-        <th data-field="id">Couple Photo</th>
-        <th data-field="name" data-sortable="true">Uid</th>
-        <th data-field="salary" data-sortable="true">Name</th>
-        <th data-field="country" data-sortable="true">Mobile No</th>
-        <th data-field="city">Title</th>
-        <th data-field="actions"  data-events="operateEvents">Actions</th>
-      </thead>
-      <?php
-            $q1="select * from success_story";
-            if($r1=mysqli_query($conn,$q1))
-            {
-                while($num1=mysqli_fetch_assoc($r1))
-                {
-                    $fname=$num1['fname'];
-                    $story=$num1['story'];
-                    echo ' <tbody>
-                    <tr>
-                      <td><img src="../images/couple_photo/'.$num1['img'].'" style="height:70px;width:80px;border-radius:60%"></td>
-                      <td>'.$num1['uid'].'</td>
-                      <td>'.$num1['fname'].'</td>
-                      <td>'.$num1['mno'].'</td>
-                      <td>'.$num1['title'].'</td>
-                      <td><a  title="View"   id="link" title="Edit">',
-                      '<i class="fa fa-edit"></i>',
-                    '</a></td>
-                    </tr> 
-                  </tbody>
-                    ';
-                }
-            }
-      ?>
-     
-    </table>
   </div>
-
  
-</div>
+  <!--   Core JS Files   -->
+  <script src="../../assets/js/core/jquery.min.js"></script>
+  <script src="../../assets/js/core/popper.min.js"></script>
+  <script src="../../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <!-- Plugin for the momentJs  -->
+  <script src="../../assets/js/plugins/moment.min.js"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="../../assets/js/plugins/sweetalert2.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../../assets/js/plugins/jquery.validate.min.js"></script>
+  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="../../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+  <script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="../../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="../../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+  <script src="../../assets/js/plugins/fullcalendar.min.js"></script>
+  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+  <script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../../assets/js/plugins/nouislider.min.js"></script>
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+  <script src="../../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <!-- Library for adding dinamically elements -->
+  <script src="../../assets/js/plugins/arrive.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="../../../../buttons.github.io/buttons.js"></script>
+  <!-- Chartist JS -->
+  <script src="../../assets/js/plugins/chartist.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../../assets/js/material-dashboard.min6c54.js?v=2.2.2" type="text/javascript"></script>
+  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+
+        $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+            $('.fixed-plugin .dropdown').addClass('open');
+          }
+
+        }
+
+        $('.fixed-plugin a').click(function(event) {
+          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .active-color span').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-color', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .background-color .badge').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('background-color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-background-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .img-holder').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).parent('li').siblings().removeClass('active');
+          $(this).parent('li').addClass('active');
 
 
+          var new_image = $(this).find("img").attr('src');
+
+          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            $sidebar_img_container.fadeOut('fast', function() {
+              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+              $sidebar_img_container.fadeIn('fast');
+            });
+          }
+
+          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $full_page_background.fadeOut('fast', function() {
+              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+              $full_page_background.fadeIn('fast');
+            });
+          }
+
+          if ($('.switch-sidebar-image input:checked').length == 0) {
+            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+          }
+        });
+
+        $('.switch-sidebar-image input').change(function() {
+          $full_page_background = $('.full-page-background');
+
+          $input = $(this);
+
+          if ($input.is(':checked')) {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar_img_container.fadeIn('fast');
+              $sidebar.attr('data-image', '#');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page_background.fadeIn('fast');
+              $full_page.attr('data-image', '#');
+            }
+
+            background_image = true;
+          } else {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar.removeAttr('data-image');
+              $sidebar_img_container.fadeOut('fast');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page.removeAttr('data-image', '#');
+              $full_page_background.fadeOut('fast');
+            }
+
+            background_image = false;
+          }
+        });
+
+        $('.switch-sidebar-mini input').change(function() {
+          $body = $('body');
+
+          $input = $(this);
+
+          if (md.misc.sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            md.misc.sidebar_mini_active = false;
+
+            if ($(".sidebar").length != 0) {
+              var ps = new PerfectScrollbar('.sidebar');
+            }
+            if ($(".sidebar-wrapper").length != 0) {
+              var ps1 = new PerfectScrollbar('.sidebar-wrapper');
+            }
+            if ($(".main-panel").length != 0) {
+              var ps2 = new PerfectScrollbar('.main-panel');
+            }
+            if ($(".main").length != 0) {
+              var ps3 = new PerfectScrollbar('main');
+            }
+
+          } else {
+
+            if ($(".sidebar").length != 0) {
+              var ps = new PerfectScrollbar('.sidebar');
+              ps.destroy();
+            }
+            if ($(".sidebar-wrapper").length != 0) {
+              var ps1 = new PerfectScrollbar('.sidebar-wrapper');
+              ps1.destroy();
+            }
+            if ($(".main-panel").length != 0) {
+              var ps2 = new PerfectScrollbar('.main-panel');
+              ps2.destroy();
+            }
+            if ($(".main").length != 0) {
+              var ps3 = new PerfectScrollbar('main');
+              ps3.destroy();
+            }
 
 
-<script>
-    $(document).on("click","#link",function(){
+            setTimeout(function() {
+              $('body').addClass('sidebar-mini');
 
-     alert("<?php echo  $story?>");
-});
-  var $table = $('#fresh-table')
+              md.misc.sidebar_mini_active = true;
+            }, 300);
+          }
 
-  window.operateEvents = {
-    'click .like': function (e, value, row, index) {
-      alert('You click like icon, row: ' + JSON.stringify(row))
-      console.log(value, row, index)
-    },
-    'click .edit': function (e, value, row, index) {
-      alert('You click edit icon, row: ' + JSON.stringify(row))
-      console.log(value, row, index)
-    },
-    'click .remove': function (e, value, row, index) {
-      $table.bootstrapTable('remove', {
-        field: 'id',
-        values: [row.id]
-      })
-    }
-  }
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+
+        });
+      });
+    });
+  </script>
+  <!-- Sharrre libray -->
+  <script src="../../assets/demo/jquery.sharrre.js"></script>
+  <script>
+    $(document).ready(function() {
 
 
+      $('#facebook').sharrre({
+        share: {
+          facebook: true
+        },
+        enableHover: false,
+        enableTracking: false,
+        enableCounter: false,
+        click: function(api, options) {
+          api.simulateClick();
+          api.openPopup('facebook');
+        },
+        template: '<i class="fab fa-facebook-f"></i> Facebook',
+        url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+      });
 
-  $(function () {
-    $table.bootstrapTable({
-      classes: 'table table-hover table-striped',
-      toolbar: '.toolbar',
+      $('#google').sharrre({
+        share: {
+          googlePlus: true
+        },
+        enableCounter: false,
+        enableHover: false,
+        enableTracking: true,
+        click: function(api, options) {
+          api.simulateClick();
+          api.openPopup('googlePlus');
+        },
+        template: '<i class="fab fa-google-plus"></i> Google',
+        url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+      });
 
-      search: true,
-      showRefresh: true,
-      showToggle: true,
-      showColumns: true,
-      pagination: true,
-      striped: true,
-      sortable: true,
-      height: $(window).height(),
-      pageSize: 25,
-      pageList: [25, 50, 100],
+      $('#twitter').sharrre({
+        share: {
+          twitter: true
+        },
+        enableHover: false,
+        enableTracking: false,
+        enableCounter: false,
+        buttons: {
+          twitter: {
+            via: 'CreativeTim'
+          }
+        },
+        click: function(api, options) {
+          api.simulateClick();
+          api.openPopup('twitter');
+        },
+        template: '<i class="fab fa-twitter"></i> Twitter',
+        url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+      });
 
-      formatShowingRows: function (pageFrom, pageTo, totalRows) {
-        return ''
-      },
-      formatRecordsPerPage: function (pageNumber) {
-        return pageNumber + ' rows visible'
+
+      // Facebook Pixel Code Don't Delete
+      ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+          n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window,
+        document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
+
+      try {
+        fbq('init', '111649226022273');
+        fbq('track', "PageView");
+
+      } catch (err) {
+        console.log('Facebook Track Error:', err);
       }
-    })
 
+    });
+  </script>
+  <script>
+    // Facebook Pixel Code Don't Delete
+    ! function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window,
+      document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
 
-    $(window).resize(function () {
-      $table.bootstrapTable('resetView', {
-        height: $(window).height()
-      })
-    })
-  })
+    try {
+      fbq('init', '111649226022273');
+      fbq('track', "PageView");
 
-  $('#sharrreTitle').sharrre({
-    share: {
-      twitter: true,
-      facebook: true
-    },
-    template: '',
-    enableHover: false,
-    enableTracking: true,
-    render: function (api, options) {
-      $("#sharrreTitle").html('Thank you for ' + options.total + ' shares!')
-    },
-    enableTracking: true,
-    url: location.href
-  })
-
-  $('#twitter').sharrre({
-    share: {
-      twitter: true
-    },
-    enableHover: false,
-    enableTracking: true,
-    buttons: { twitter: {via: 'CreativeTim'}},
-    click: function (api, options) {
-      api.simulateClick()
-      api.openPopup('twitter')
-    },
-    template: '<i class="fa fa-twitter"></i> {total}',
-    url: location.href
-  })
-
-  $('#facebook').sharrre({
-    share: {
-      facebook: true
-    },
-    enableHover: false,
-    enableTracking: true,
-    click: function (api, options) {
-      api.simulateClick()
-      api.openPopup('facebook')
-    },
-    template: '<i class="fa fa-facebook-square"></i> {total}',
-    url: location.href
-  })
-</script>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga')
-
-  ga('create', 'UA-46172202-1', 'auto')
-  ga('send', 'pageview')
-
-</script>
-
+    } catch (err) {
+      console.log('Facebook Track Error:', err);
+    }
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />
+  </noscript>
 </body>
 
+
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/tables/extended.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:36 GMT -->
 </html>
