@@ -1,3 +1,13 @@
+<?php
+include 'conn.php';
+session_start();
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
+}
+else{
+  header("location:user/user_login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -40,8 +50,7 @@
                       <div class="col-12">
                         <div class="row portfolio-grid">
                             <?php 
-                            include 'conn.php';
-                            session_start();
+                            
                             $q1="select * from user_album where uid='".$_SESSION['uid']."'";
                             if($r1=mysqli_query($conn,$q1))
                             {

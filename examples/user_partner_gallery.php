@@ -1,6 +1,8 @@
 <?php
  include 'conn.php';
  session_start();
+ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+ {
  $pid="";
  if(isset($_GET['uid']))
  {
@@ -28,6 +30,10 @@ if(isset($_POST['unlike']))
         header("location:user_partner_gallery.php?uid=$pid");
     }
 }
+ }
+ else{
+   header("location:user/user_login.php");
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">

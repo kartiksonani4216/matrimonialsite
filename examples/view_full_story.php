@@ -2,7 +2,13 @@
 
     include "conn.php";
     session_start();
-    $sid=$_GET['sid'];
+    $sid="";
+    if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+    {
+      if(isset($_GET['sid']))
+      {
+        $sid=$_GET['sid'];
+      }
     $fname="";
     $mno="";
     $msg="";
@@ -31,7 +37,10 @@
             $img=$num1['img'];
         }
     }
-    
+  }
+  else{
+    header("location:user/user_login.php");
+  }
  
 ?>
 <!DOCTYPE html>

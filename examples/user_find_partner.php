@@ -1,7 +1,12 @@
 <?php
 include 'conn.php';
 session_start();
-$uid=$_GET['uid'];
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
+    if(isset($_GET['uid']))
+    {
+      $uid=$_GET['uid'];
+    }
 $vid="";
 $status='';
 $q11="select * from user_registration1 where uid='$uid'";
@@ -33,7 +38,7 @@ if(isset($_POST['view']))
     $bytes = random_bytes(3);
     $new=bin2hex($bytes);
     $vid=$_SESSION['uid'];
-    $q30="insert into user_request values('$new',$vid,'$uid','request',current_timestamp())";
+    $q30="INSERT INTO `user_request`(`rid`, `uid`, `ruid`, `status`, `stamp`) VALUES ('$new','$vid','$uid','request',current_timestamp())";
     if($r30=mysqli_query($conn,$q30))
     {
          header("location:user_find_partner.php?uid=$uid");
@@ -71,6 +76,10 @@ if(isset($_POST['view']))
   {
       header("location:user_partner_gallery.php?uid=$uid");
   }
+}
+else{
+    header("location:user/user_login.php");
+}
 ?>
 
 
@@ -257,9 +266,14 @@ if(isset($_POST['view']))
 
                                                         
                                                     }
+                                                    elseif($status == 'block')
+                                                    {
+                                                   echo ' <button class="btn btn-danger" type="submit" name="blocked">Block  </button><br><br>';
+                                                       
+                                                    }
                                                     else{
                                         
-                                       echo ' <button class="btn btn-info" type="submit" name="request">Request</button>';
+                                                   echo ' <button class="btn btn-info" type="submit" name="request">Request</button>';
                                                         
                                                     }
                                              ?>

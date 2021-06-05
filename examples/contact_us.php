@@ -1,6 +1,8 @@
 <?php
 include 'conn.php';
 session_start();
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
 $uid=$_SESSION['uid'];
 $msg="";
 $error="";
@@ -26,7 +28,10 @@ $new=bin2hex($bytes);
          $msg="Message Send SuccessFully";
      }
 }
-
+}
+else{
+    header("location:user/user_login.php");
+}
 
 ?>
 <style>

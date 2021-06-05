@@ -1,6 +1,8 @@
 <?php
 include 'conn.php';
 session_start();
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
 $id=$_SESSION['uid'];
 $name=$_SESSION['fname'];
 $bytes = random_bytes(3);
@@ -14,7 +16,10 @@ if(isset($_POST['view']))
         header("location:user_find_partner.php?uid=$vid");
        }
     }
- 
+  }
+  else{
+    header("location:user/user_login.php");
+  }
 
 ?>
 <!DOCTYPE html>
@@ -129,7 +134,7 @@ if(isset($_POST['view']))
                       </thead>
                          <?php
                                 $vuid="";
-                                $q1="select * from visit_profile where vuid='$uid' order by stamp desc";
+                                $q1="select * from visit_profile where vuid='$uid ' order by stamp desc";
                                 if($r1=mysqli_query($conn,$q1))
                                 {
                                     while($num=mysqli_fetch_assoc($r1))

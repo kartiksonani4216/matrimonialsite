@@ -1,5 +1,7 @@
 <?php
 include 'conn.php';
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
 $uid=$_SESSION['uid'];
 $fname=$_SESSION['fname'];
 $q1="select * from user_registration1 where uid='$uid'";
@@ -20,7 +22,10 @@ if($r12=mysqli_query($conn,$q12))
       $id=$num12['uid'];
   }
 }
-
+}
+else{
+    header("location:user/user_login.php");
+}
 
 
 ?>
@@ -30,7 +35,7 @@ if($r12=mysqli_query($conn,$q12))
 <div class="sidebar" data-color="orange" data-background-color="black" data-image="../assets/img/sidebar-3.jpg">
 
     <div class="logo"><a href="http://www.creative-tim.com/" class="simple-text logo-mini">
-            Ct
+            BD
         </a>
         <a href="http://www.creative-tim.com/" class="simple-text logo-normal">
             Bridal
@@ -178,13 +183,13 @@ if($r12=mysqli_query($conn,$q12))
                         <li class="nav-item ">
                             <a class="nav-link" href="user_follower.php">
                                 <span class="sidebar-mini"> VF </span>
-                                <span class="sidebar-normal"> View Followers </span>
+                                <span class="sidebar-normal">  Followers </span>
                             </a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="user_following.php">
                                 <span class="sidebar-mini"> VF </span>
-                                <span class="sidebar-normal"> View Following </span>
+                                <span class="sidebar-normal">  Following </span>
                             </a>
                         </li>
                     </ul>
@@ -201,7 +206,13 @@ if($r12=mysqli_query($conn,$q12))
                     <i class="material-icons">email</i>
                     <p> Abuse Report </p>
                 </a>
-            </li>   
+            </li> 
+            <li class="nav-item ">
+                <a class="nav-link" href="change_password.php">
+                    <i class="material-icons">lock</i>
+                    <p> Change Password </p>
+                </a>
+            </li>  
         </ul>
     </div>
     <div class="sidebar-background"></div>

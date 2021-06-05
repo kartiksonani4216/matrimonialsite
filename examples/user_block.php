@@ -1,6 +1,8 @@
 <?php
    include 'conn.php';
    session_start();
+   if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+   {
    $gender="";
    $uname=$_SESSION['fname'];
    $id=$_SESSION['uid'];
@@ -28,34 +30,21 @@
  
   
    
-    if(isset($_POST['block']))
-    {
-      $ruid=$_POST['bid'];
-      $q33="update user_request set status='block' where ruid='$ruid' and uid='$id'";
-      if($r33=mysqli_query($conn,$q33))
-      {
-        header("location:user_following.php");
-      }
-    }
-    if(isset($_POST['following']))
-    {
-        $fid=$_POST['fid'];
-        $q22="update user_request set status='accept' where uid='$id' and ruid='$fid'";
-        if($r22=mysqli_query($conn,$q22))
-        {
-           header("location:user_block.php");
-        }
-    }
+    
+    
     if(isset($_POST['follower']))
     {
         $foid=$_POST['foid'];
-        $q33="update user_request set status='accept' where uid='$foid' and ruid='$id'";
+        $q33="update user_request set status='accept',blockedby='',block='' where blockedby='$id' and block='$foid'";
         if($r33=mysqli_query($conn,$q33))
         {
             header("location:user_block.php");
         }
     }
-
+   }
+   else{
+     header("location:user/user_login.php");
+   }
 
 ?>
 <!DOCTYPE html>
@@ -66,7 +55,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Find Match</title>
+    <title>Block User</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets2/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets2/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -181,48 +170,48 @@ h1 {
                         <div class="row portfolio-grid">
                         <?php 
                         $following=0;
-                            $q15="select * from user_request where uid='$id' and status='block'  ";
+                            // $q15="select * from user_request where uid='$id' and status='block'  ";
+                            // if($r15=mysqli_query($conn,$q15))
+                            // {
+                               
+                            //   while($n1=mysqli_fetch_assoc($r15))
+                            //   {
+                                  
+                            //     $reqid=$n1['ruid'];
+                            //     $q1="select * from user_registration1 where uid='$reqid'";
+                            //     if($r1=mysqli_query($conn,$q1))
+                            //     {
+                            //         while($num=mysqli_fetch_assoc($r1))
+                            //         {
+                            //             echo '            
+                            //             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                            //             <figure class="effect-text-in">
+                            //             <a href="images/user/'.$num['img'].'" target="blank"><img src="images/user/'.$num['img'].'"  alt="image" style="height:400px;" />
+                            //                 <figcaption>
+                            //                 <h4><font color="white">'.$num['fname'].'</font></h4>
+                            //                 <form method="post">
+                            //                 <input type="hidden" value="'.$n1['rid'].'" name="rid"/>
+                            //                 <p>
+                            //                 <input type="hidden" name="fid" value="'.$reqid.'">
+                            //                 <button name="following" type="submit" class="btn btn-success mr-2">UnBlock User</button></p>
+                            //                 </p>
+                            //                 </form>
+                            //               </figcaption>
+                            //             </figure>
+                            //           </div>                      ';
+                            //         }
+                            //     }
+                               
+                            //   }
+                            // }
+                            $q15="select * from user_request where blockedby='$id' and status='block'  ";
                             if($r15=mysqli_query($conn,$q15))
                             {
                                
                               while($n1=mysqli_fetch_assoc($r15))
                               {
                                   
-                                $reqid=$n1['ruid'];
-                                $q1="select * from user_registration1 where uid='$reqid'";
-                                if($r1=mysqli_query($conn,$q1))
-                                {
-                                    while($num=mysqli_fetch_assoc($r1))
-                                    {
-                                        echo '            
-                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-                                        <figure class="effect-text-in">
-                                        <a href="images/user/'.$num['img'].'" target="blank"><img src="images/user/'.$num['img'].'"  alt="image" style="height:400px;" />
-                                            <figcaption>
-                                            <h4><font color="white">'.$num['fname'].'</font></h4>
-                                            <form method="post">
-                                            <input type="hidden" value="'.$n1['rid'].'" name="rid"/>
-                                            <p>
-                                            <input type="hidden" name="fid" value="'.$reqid.'">
-                                            <button name="following" type="submit" class="btn btn-success mr-2">UnBlock User</button></p>
-                                            </p>
-                                            </form>
-                                          </figcaption>
-                                        </figure>
-                                      </div>                      ';
-                                    }
-                                }
-                               
-                              }
-                            }
-                            $q15="select * from user_request where ruid='$id' and status='block'  ";
-                            if($r15=mysqli_query($conn,$q15))
-                            {
-                               
-                              while($n1=mysqli_fetch_assoc($r15))
-                              {
-                                  
-                                $reqid=$n1['uid'];
+                                $reqid=$n1['block'];
                                 $q1="select * from user_registration1 where uid='$reqid'";
                                 if($r1=mysqli_query($conn,$q1))
                                 {

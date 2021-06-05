@@ -1,6 +1,8 @@
 <?php
    include 'conn.php';
    session_start();
+   if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+   {
    $gender="";
    $uname=$_SESSION['fname'];
    $id=$_SESSION['uid'];
@@ -23,6 +25,10 @@
         header("location:user_find_partner.php?uid=$uid");
        }
     }
+  }
+  else{
+    header("location:user/user_login.php");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

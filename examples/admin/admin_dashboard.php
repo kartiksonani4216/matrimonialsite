@@ -1,6 +1,8 @@
 <?php
 include '../conn.php';
 session_start();
+if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
+{
 $id=$_SESSION['aid'];
 $anmae=$_SESSION['aname'];
 $aemail=$_SESSION['aemail'];
@@ -34,6 +36,16 @@ $q15="select * from user_registration1 where account='active'";
 if($r15=mysqli_query($conn,$q15))
 {
   $active=mysqli_num_rows($r15);
+}
+$q16="select * from abuse_report";
+if($r16=mysqli_query($conn,$q16))
+{
+  $abuse=mysqli_num_rows($r16);
+}
+}
+else
+{
+  header("location:admin_login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -110,21 +122,27 @@ if($r15=mysqli_query($conn,$q15))
   <!-- End Google Tag Manager (noscript) -->
   <div class="wrapper ">
   <?php 
-if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']))
+if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
   {
       include "admin_sidebar.php";
   } 
   else
   {
-    
-    header("location:admin/admin_login.php");
+    header("location:admin_login.php");
   }
  ?>
     <div class="main-panel">
       <!-- Navbar -->
        <?php
-            include 'admin_header.php';
-       ?>
+            if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
+            {
+                include "admin_header.php";
+            } 
+            else
+            {
+              header("location:admin_login.php");
+            }
+           ?>
       <!-- End Navbar -->
       <div class="content">
         <div class="content">
@@ -242,122 +260,63 @@ if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aema
                 </div>
               </div>
             </div>
-            <h3>Manage Listings</h3>
+            <h3>Couple Photo</h3>
             <br>
             <div class="row">
               <div class="col-md-4">
                 <div class="card card-product">
                   <div class="card-header card-header-image" data-header-animation="true">
                     <a href="#pablo">
-                      <img class="img" src="../../assets/img/card-2.jpg">
+                      <img class="img" src="../../assets/img/couple1.jpg">
                     </a>
                   </div>
                   <div class="card-body">
                     <div class="card-actions text-center">
-                      <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                        <i class="material-icons">build</i> Fix Header!
-                      </button>
-                      <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="View">
-                        <i class="material-icons">art_track</i>
-                      </button>
-                      <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Edit">
-                        <i class="material-icons">edit</i>
-                      </button>
-                      <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Remove">
-                        <i class="material-icons">close</i>
-                      </button>
+                     
                     </div>
                     <h4 class="card-title">
-                      <a href="#pablo">Cozy 5 Stars Apartment</a>
+                      <a href="#pablo">William & Sophia</a>
                     </h4>
                     <div class="card-description">
-                      The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Barcelona.
+                    It’s one thing to fall in love. It’s another to feel someone else fall in love with you, and to feel a responsibility toward that love  .
                     </div>
                   </div>
-                  <div class="card-footer">
-                    <div class="price">
-                      <h4>$899/night</h4>
-                    </div>
-                    <div class="stats">
-                      <p class="card-category"><i class="material-icons">place</i> Barcelona, Spain</p>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="card card-product">
                   <div class="card-header card-header-image" data-header-animation="true">
                     <a href="#pablo">
-                      <img class="img" src="../../assets/img/card-3.jpg">
+                      <img class="img" src="../../assets/img/couple2.jpg">
                     </a>
                   </div>
                   <div class="card-body">
-                    <div class="card-actions text-center">
-                      <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                        <i class="material-icons">build</i> Fix Header!
-                      </button>
-                      <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="View">
-                        <i class="material-icons">art_track</i>
-                      </button>
-                      <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Edit">
-                        <i class="material-icons">edit</i>
-                      </button>
-                      <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Remove">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
+                    
                     <h4 class="card-title">
-                      <a href="#pablo">Office Studio</a>
+                      <a href="#pablo">James & Isabella</a>
                     </h4>
                     <div class="card-description">
-                      The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the night life in London, UK.
+                    I love you the way a drowning man loves air. And it would destroy me to have you just a little.
                     </div>
                   </div>
-                  <div class="card-footer">
-                    <div class="price">
-                      <h4>$1.119/night</h4>
-                    </div>
-                    <div class="stats">
-                      <p class="card-category"><i class="material-icons">place</i> London, UK</p>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="card card-product">
                   <div class="card-header card-header-image" data-header-animation="true">
                     <a href="#pablo">
-                      <img class="img" src="../../assets/img/card-1.jpg">
+                      <img class="img" src="../../assets/img/couple4.jpg">
                     </a>
                   </div>
                   <div class="card-body">
-                    <div class="card-actions text-center">
-                      <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                        <i class="material-icons">build</i> Fix Header!
-                      </button>
-                      <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="View">
-                        <i class="material-icons">art_track</i>
-                      </button>
-                      <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Edit">
-                        <i class="material-icons">edit</i>
-                      </button>
-                      <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Remove">
-                        <i class="material-icons">close</i>
-                      </button>
-                    </div>
+                   
                     <h4 class="card-title">
-                      <a href="#pablo">Beautiful Castle</a>
+                      <a href="#pablo">Benjamin & Yasmin</a>
                     </h4>
                     <div class="card-description">
-                      The place is close to Metro Station and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in Milan.
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="price">
-                      <h4>$459/night</h4>
-                    </div>
-                    <div class="stats">
-                      <p class="card-category"><i class="material-icons">place</i> Milan, Italy</p>
+                    I love you as the plant that never blooms, but carries in itself the light of hidden flowers.Like rain, I will always fall for you.
                     </div>
                   </div>
                 </div>

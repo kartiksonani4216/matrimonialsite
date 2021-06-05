@@ -62,7 +62,7 @@ if(isset($_POST['submit']))
         if($n2==1)
         {
             
-            $q2="UPDATE `user_registration1` SET `img`='$file1' WHERE uid='$uid'";
+            $q2="UPDATE `user_registration1` SET `img`='$file1',atype='real' WHERE uid='$uid'";
             if($r2=mysqli_query($conn,$q2))
             {
                

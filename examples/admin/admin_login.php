@@ -202,7 +202,8 @@ if($error)
                       <div class="ml-auto">
                       <button type="submit" class="btn btn-info btn-round btn-fill " name="submit">
                       <i class="material-icons"></i>  <b>Submit</b>
-                  </button>
+                  </button><br><br>
+                       <a href="forgot.php"><font color="red">Forget Password</font></a>
                     </div>
                     </div><br><br>
               </div>

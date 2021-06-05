@@ -1,6 +1,8 @@
 <?php
    include 'conn.php';
    session_start();
+   if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+   {
    $gender="";
    $uname=$_SESSION['fname'];
    $id=$_SESSION['uid'];
@@ -64,13 +66,16 @@
     if(isset($_POST['block']))
     {
       $ruid=$_POST['bid'];
-      $q33="update user_request set status='block' where ruid='$id' and uid='$ruid'";
+      $q33="update user_request set status='block',blockedby='$id',block='$ruid' where ruid='$id' and uid='$ruid'";
       if($r33=mysqli_query($conn,$q33))
       {
         header("location:user_follower.php");
       }
     }
-
+}
+else{
+    header("location:user/user_login.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -82,7 +87,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Find Match</title>
+    <title>Bridal Followers</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets2/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets2/vendors/flag-icon-css/css/flag-icon.min.css">

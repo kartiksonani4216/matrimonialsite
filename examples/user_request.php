@@ -1,6 +1,8 @@
 <?php
    include 'conn.php';
    session_start();
+   if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+   {
     $uname=$_SESSION['fname'];
    $id=$_SESSION['uid'];
    $rid="";
@@ -53,7 +55,9 @@
         header("location:error.php");
       }
     }
-
+   }
+   else{
+       header("location:user/user_login.php");
 
 ?>
 <!DOCTYPE html>
@@ -65,7 +69,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Find Match</title>
+    <title>User Request</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets2/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets2/vendors/flag-icon-css/css/flag-icon.min.css">

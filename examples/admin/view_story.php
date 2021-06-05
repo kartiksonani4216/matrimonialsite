@@ -2,7 +2,12 @@
 
 include '../conn.php';
 session_start();
-$sid=$_GET['sid'];
+if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
+{
+  if(isset($_GET['sid']))
+  {
+    $sid=$_GET['sid'];
+  }
 $q1="select * from success_story where sid='$sid'";
 if($r1=mysqli_query($conn,$q1))
 {
@@ -15,7 +20,10 @@ if($r1=mysqli_query($conn,$q1))
         $img=$num1['img'];
     }
 }
-
+}
+else{
+  header("location:admin_login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

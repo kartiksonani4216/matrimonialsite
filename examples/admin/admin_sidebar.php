@@ -1,17 +1,14 @@
 <?php
-include '../conn.php';
+if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
+{
 $aid=$_SESSION['aid'];
 $aname=$_SESSION['aname'];
 $aimg=$_SESSION['aimg'];
-
-?>
-
-
-
+echo '
 <div class="sidebar" data-color="orange" data-background-color="black" data-image="../../assets/img/sidebar-3.jpg">
  
       <div class="logo"><a href="http://www.creative-tim.com/" class="simple-text logo-mini">
-          Ct
+          BD
         </a>
         <a href="http://www.creative-tim.com/" class="simple-text logo-normal">
           Bridal
@@ -19,14 +16,12 @@ $aimg=$_SESSION['aimg'];
       <div class="sidebar-wrapper">
         <div class="user">
           <div class="photo">
-            <img src="../images/admin/<?php echo $aimg; ?>" />
+            <img src="../images/admin/'.$aimg.'" />
           </div>
           <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">
               <span>
-                <?php
-                      echo  'Admin';
-                ?>
+                  Admin
               </span>
             </a>
           </div>
@@ -112,9 +107,15 @@ $aimg=$_SESSION['aimg'];
             </a>
           </li>    
           <li class="nav-item ">
-            <a class="nav-link" href="user_query.php">
+            <a class="nav-link" href="setting.php">
               <i class="material-icons">settings</i>
               <p> Settings </p>
+            </a>
+          </li> 
+          <li class="nav-item ">
+            <a class="nav-link" href="admin_change_password.php">
+              <i class="material-icons">lock</i>
+              <p> Change Password </p>
             </a>
           </li> 
               
@@ -124,4 +125,6 @@ $aimg=$_SESSION['aimg'];
       </div>
       <div class="sidebar-background"></div>
     </div>
-    
+  ';
+}
+?>

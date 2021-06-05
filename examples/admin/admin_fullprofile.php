@@ -1,7 +1,13 @@
 <?php
 include '../conn.php';
 session_start();
-$pid=$_GET['uid'];
+if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
+{
+  if(isset($_GET['uid']))
+  {
+    $pid=$_GET['uid'];
+
+  }
 $msg="";
 $error="";
 if(isset($_POST['submit']))
@@ -24,7 +30,10 @@ if($r11=mysqli_query($conn,$q11))
         $fname=$num11['fname'];
     }
 }
-
+}
+else{
+  header("location:admin_login.php");
+}
 
 ?>
 

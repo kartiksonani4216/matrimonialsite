@@ -1,6 +1,8 @@
 <?php
 include 'conn.php';
 session_start();
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
 $error=FALSE;
 $msg=FALSE;
 $uname="";
@@ -14,11 +16,14 @@ if(isset($_POST['submit']))
     $q2="select * from user_registration1 where uid='$uid'";
     if($r2=mysqli_query($conn,$q2))
     { 
-      
+        while($num1=mysqli_fetch_assoc($r2))
+        {
+          $img=$num1['img'];
+        }
         $n2=mysqli_num_rows($r2);
         if($n2==1)
         {
-            
+            unlink("images/user/$img");
             $q2="UPDATE `user_registration1` SET `img`='$file1' WHERE uid='$uid'";
             if($r2=mysqli_query($conn,$q2))
             {
@@ -37,7 +42,10 @@ if(isset($_POST['submit']))
         }
     }
 }
-
+}
+else{
+  header("location:user/user_login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +56,7 @@ if(isset($_POST['submit']))
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Material Dashboard PRO by Creative Tim

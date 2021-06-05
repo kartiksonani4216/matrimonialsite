@@ -2,6 +2,8 @@
 
  include '../conn.php';
  session_start();
+ if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
+ {
  if(isset($_POST['submit']))
  {
       $report=$_POST['report'];
@@ -10,7 +12,10 @@
       </script>";
       header("refresh:1;url=admin_abuse_report.php");
  }
-
+ }
+ else{
+   header("location:admin_login.php");
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +29,7 @@
   <link rel="icon" type="image/png" href="../../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard PRO by Creative Tim
+    Bridal Abuse Report
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->

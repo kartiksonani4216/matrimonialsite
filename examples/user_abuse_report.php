@@ -2,6 +2,8 @@
 
     include "conn.php";
     session_start();
+    if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+    {
     $uid=$_SESSION['uid'];
     $fname=$_SESSION['fname'];
     $fname="";
@@ -38,6 +40,10 @@
               $error="Abuse Report Not Added SuccessFully";
           }
     }
+}
+else{
+    header("location:user/user_login.php");
+}
  
 ?>
 <!DOCTYPE html>
@@ -54,7 +60,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon2.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Material Dashboard PRO by Creative Tim
+        Bridal Abuse Report
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!-- Extra details for Live View on GitHub Pages -->

@@ -3,8 +3,13 @@
 // header('Refresh: ' . $refreshAfter);
 include 'conn.php';
 session_start();
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
 $uid=$_SESSION['uid'];
+if(isset($_GET['uid']))
+{
 $cid=$_GET['uid'];
+}
 $nrow='';
 $bytes = random_bytes(3);
 $new=bin2hex($bytes);
@@ -32,8 +37,14 @@ if(isset($_POST['submit']))
 		header("location:chat.php?uid=$cid");
 	}
 }
-
+}
+else{
+	header("location:user/user_login.php");
+}
 ?>
+<style>
+ 
+</style>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -290,12 +301,14 @@ $('#action_menu_btn').click(function(){
 			<div class="row justify-content-center h-100">
 				<div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
 					<div class="card-header">
+					<form method="post">
 						<div class="input-group">
 							<input type="text" placeholder="Search..." name="" class="form-control search">
 							<div class="input-group-prepend">
 								<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
 							</div>
 						</div>
+						</form>
 					</div>
 					<div class="card-body contacts_body">
 						<ui class="contacts">
@@ -387,7 +400,7 @@ $('#action_menu_btn').click(function(){
 								</ul>
 							</div>
 						</div>
-						<div class="card-body msg_card_body">
+						<div class="card-body msg_card_body scroll">
 						<?php 
 						$q11="select * from message order by stamp";
 						if($r11=mysqli_query($conn,$q11))

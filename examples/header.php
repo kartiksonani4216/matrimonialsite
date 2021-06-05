@@ -1,3 +1,14 @@
+<?php
+include 'conn.php';
+$uid=$_SESSION['uid'];
+$vuid="";
+$date=date("Y-m-d");
+$count=0;
+$count1=0;
+
+
+
+?>
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
@@ -30,18 +41,64 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="http://example.com/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
-                  <span class="notification">5</span>
                   <p class="d-lg-none d-md-block">
                     Some Actions
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                  <a class="dropdown-item" href="#">Another Notification</a>
-                  <a class="dropdown-item" href="#">Another One</a>
+                          
+                <?php
+                $q11="select * from visit_profile where vuid='$uid'";
+                if($r11=mysqli_query($conn,$q11))
+                {
+                       while($num11=mysqli_fetch_assoc($r11))
+                       {
+                         $cdate=$num11['stamp'];
+                         $cdate=substr($cdate,0,10);
+                         if($date == $cdate)
+                         {
+                          echo ' <a class="dropdown-item" href="user_notification.php">'.$num11['uname'].' Visit Profile</a>
+                         
+                        ';
+                        $count++;
+                         }
+                         
+                       }
+                }
+                $q12="select * from user_like_photo where rlid='$uid'";
+                if($r12=mysqli_query($conn,$q12))
+                {
+                     while($num12=mysqli_fetch_assoc($r12))
+                     {
+                       $vid=$num12['uid'];
+                       $q20="select * from user_registration1 where uid='$vid'";
+                       if($r20=mysqli_query($conn,$q20))
+                       {
+                         while($num20=mysqli_fetch_assoc($r20))
+                         {
+                           $fname=$num20['fname'];
+                         }
+                       }
+                       $cdate1=$num12['stamp'];
+                       $cdate1=substr($cdate1,0,10);
+                       if($date == $cdate1)
+                       {
+                        echo ' <a class="dropdown-item" href="user_like.php">'.$fname.' Like Your Photo</a> 
+                        ';
+                        $count1++;
+                       }
+                     
+                     }
+                }
+                $count3=$count+$count1;
+                if($count3 == 0)
+                {
+                  echo ' <a class="dropdown-item" href="">No Notification Today</a> 
+                  ';
+                }
+                ?>
                 </div>
+               
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

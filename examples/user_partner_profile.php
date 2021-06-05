@@ -1,14 +1,21 @@
 <?php
 include 'conn.php';
 session_start();
-$pid=$_GET['uid'];
+$pid="";
+if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
+{
+    if(isset($_GET['uid']))
+    { 
+       $pid=$_GET['uid'];
+    } 
 if(isset($_POST['request']))
 {
- 
        header("location:findmatch.php");
-  
 }  
-
+}
+else{
+  header("location:user/user_login.php");
+}
 
 ?>
 
@@ -278,7 +285,6 @@ if(isset($_POST['request']))
                   <p class="card-description">
                     '.$about.'...
                   </p>
-                  <a href="user_change_profile.php" class="btn btn-rose btn-round">Change Profile Pic</a>
                 </div>
               </div>
             </div>

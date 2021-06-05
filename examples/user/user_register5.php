@@ -242,7 +242,6 @@ if($error)
                                     <option >Madhya Pradesh</option>   
                                     <option >Maharashtra</option>
                                     <option >Manipur</option>   
-                                    <option >None</option> 
 
                           </select>
                         </div>
