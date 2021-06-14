@@ -94,6 +94,9 @@ if(isset($_POST['submit']))
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.common.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
   <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -156,20 +159,14 @@ if(isset($_POST['submit']))
 </head>
 
 <body class="">
-<?php
+<?php 
 if($msg)
 {
-    echo '<div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <strong>'.$msg.'</strong> 
-    </div>';
-}
-if($error)
-{
-    echo '<div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <strong>'.$error.'</strong>
-</div>';
+    echo '<script>swal("Well Done!", "'.$msg.'", "success");</script>';  
+ }
+ if($error)
+ {
+    echo '<script>swal("Oops!", "'.$error.'", "error");</script>';
 }
 ?>
   <!-- Extra details for Live View on GitHub Pages -->

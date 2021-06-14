@@ -56,10 +56,7 @@ if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aema
         }
 
     }
-    if(isset($_POST['goback']))
-    {
-        header("refresh:0;url=admin_dashboard.php");
-    }
+    
     
 }
 }
@@ -73,6 +70,14 @@ else{
 <!-- Mirrored from www.bootstrapdash.com/demo/connect-plus/jquery/template/demo_1/pages/samples/blank-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Apr 2021 08:50:34 GMT -->
 <head>
     <!-- Required meta tags -->
+    <style>
+     input[placeholder], [placeholder], *[placeholder] {
+    color: yellow !important;
+}
+       ::placeholder{
+         color:white !important;
+       }
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bridal Admin Change Password</title>
@@ -114,19 +119,20 @@ else{
                 <img src="../images/admin/<?php echo $aimg ?>" style="height:135px;width:135px;border-radius: 50%;" class="lock-profile-img" alt="img">
                 <form class="pt-5" method="post">
                   <div class="form-group">
-                    <input type="password" class="form-control text-center text-white font-weight-bold " id="examplePassword1" name="opass" placeholder="Old Password">
+                    <input type="password" class="form-control text-center text-white font-weight-bold " id="examplePassword1" name="opass" placeholder="Old Password" required>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control text-center text-white font-weight-bold" id="examplePassword1" name="npass" placeholder="New Password">
+                    <input type="password" class="form-control text-center text-white font-weight-bold" id="examplePassword1" name="npass" placeholder="New Password" required>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control text-center text-white  font-weight-bold" id="examplePassword1" name="ncpass" placeholder="Confirm New Password">
+                    <input type="password" class="form-control text-center text-white  font-weight-bold" id="examplePassword1" name="ncpass" placeholder="Confirm New Password" required  >
                   </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-block btn-success btn-lg font-weight-medium" name="submit">Change Password</button>
-                    <button class="btn btn-block btn-primary btn-lg font-weight-medium" name="goback">Go Back</button>
+                    </form>
+                    <button class="btn btn-block btn-primary btn-lg font-weight-medium" name="goback"><a href="admin_dashboard.php" style="color:white;text-decoration:none;">Go Back</a></button>
                   </div>
-                </form>
+               
               </div>
             </div>
           </div>

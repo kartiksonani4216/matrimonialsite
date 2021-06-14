@@ -106,6 +106,7 @@ else{
                           $q12="select * from user_like_photo where rlid='$uid' order by stamp desc";
                           if($r12=mysqli_query($conn,$q12))
                           {
+                            $count=mysqli_num_rows($r12);
                               while($num12=mysqli_fetch_assoc($r12))
                               {
                                    $vuid=$num12['uid'];
@@ -137,6 +138,17 @@ else{
                                  </div>';
                               
                               }
+                          }
+                          if($count == 0)
+                          {
+                            echo ' <div class="alert alert-info alert-with-icon" data-notify="container">
+                            <i class="material-icons" data-notify="icon"><font color="red">notifications</font></i> 
+                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <i class="material-icons">close</i>
+                           </button>
+                           <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+                          <span data-notify="message">No One Like Your photo Yet.If Any One Like Your Photo We Will Notify you</span>
+                         </div>';
                           }
                        
                    ?>

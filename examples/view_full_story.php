@@ -34,7 +34,7 @@
             $uid=$num1['uid'];
             $title=$num1['title'];
             $story=$num1['story'];
-            $img=$num1['img'];
+            $aimg=$num1['img'];
         }
     }
   }
@@ -52,10 +52,10 @@
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard PRO by Creative Tim
+    Bridal | View Success Story
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->
@@ -193,7 +193,7 @@
                       <h4 class="title">Your Couple Photo</h4>
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
-                          <img src="images/couple_photo/<?php echo  $img; ?>" alt="..">
+                          <img src="images/couple_photo/<?php echo  $aimg; ?>" alt="..">
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                        <br><br>

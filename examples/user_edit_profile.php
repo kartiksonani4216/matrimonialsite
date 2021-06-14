@@ -1,24 +1,84 @@
 <?php
 include 'conn.php';
 session_start();
-if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
-{}
-else{
-  header("location:user/user_login.php");
+$error=FALSE;
+$msg=FALSE;
+$uname="";
+$uid=$_SESSION['uid'];
+if(isset($_POST['submit']))
+{
+    $mstatus=$_POST['mstatus'];
+    $height=$_POST['height'];
+    $weight=$_POST['weight'];    
+    $fstatus=$_POST['fstatus'];
+    $ftype=$_POST['ftype'];
+    $fvalue=$_POST['fvalue'];
+    $disability=$_POST['disability'];   
+   
+    $q2="select * from user_registration1 where uid='$uid'";
+    if($r2=mysqli_query($conn,$q2))
+    { 
+      
+        $n2=mysqli_num_rows($r2);
+        if($n2==1)
+        {
+            
+            $q2="UPDATE `user_registration1` SET `mstatus`='$mstatus',`height`='$height',`weight`='$weight',`fstatus`='$fstatus',`ftype`='$ftype',`fvalue`='$fvalue',`disability`='$disability' WHERE uid='$uid'";
+            if($r2=mysqli_query($conn,$q2))
+            {
+               
+                $q5="update user_registration1 set action='3',stamp=CURRENT_TIMESTAMP() where uid='$uid'";
+                if($r5=mysqli_query($conn,$q5));
+                {
+                    $msg="<b><u>   ". $uname ."</u></b>". "  Personal Information Updated SuccesFully....We are Going To Next Step...";
+                    header("refresh:2;url=user_edit_profile1.php");
+                }
+                   
+            }
+            else
+            {
+                $error="Personal Information Registration Failed Failed .... Please Try Again ....";    
+            }
+        }
+        else {
+            $error="User Already Exist...We are Going To Last Remaining Registration Step....";
+        }
+    }
 }
+$q12="select * from user_registration1 where uid=$uid";
+if($r12=mysqli_query($conn,$q12))
+{
+  while($num12=mysqli_fetch_assoc($r12))
+  {
+    $height=$num12['height'];
+    $weight=$num12['weight'];
+    $disability=$num12['disability'];
+  }
+}
+if(isset($_POST['next']))
+{
+  header("location:user_edit_profile1.php");
+
+}
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.common.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Bridal Profile
+  Bridal Complete Profile
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->
@@ -30,25 +90,25 @@ else{
   <!-- Schema.org markup for Google+ -->
   <meta itemprop="name" content="Material Dashboard PRO by Creative Tim">
   <meta itemprop="description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
-  <meta itemprop="image" content="../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta itemprop="image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="product">
   <meta name="twitter:site" content="@creativetim">
   <meta name="twitter:title" content="Material Dashboard PRO by Creative Tim">
   <meta name="twitter:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design.">
   <meta name="twitter:creator" content="@creativetim">
-  <meta name="twitter:image" content="../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
+  <meta name="twitter:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg">
   <!-- Open Graph data -->
   <meta property="fb:app_id" content="655968634437471">
   <meta property="og:title" content="Material Dashboard PRO by Creative Tim" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="../dashboard.html" />
-  <meta property="og:image" content="../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
+  <meta property="og:image" content="../../../../s3.amazonaws.com/creativetim_bucket/products/51/original/opt_mdp_thumbnail.jpg" />
   <meta property="og:description" content="Material Dashboard PRO is a Premium Material Bootstrap 4 Admin with a fresh, new design inspired by Google's Material Design." />
   <meta property="og:site_name" content="Creative Tim" />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.min6c54.css?v=2.2.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -66,269 +126,193 @@ else{
         dl = l != 'dataLayer' ? '&l=' + l : '';
       j.async = true;
       j.src =
-        '../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
   </script>
   <!-- End Google Tag Manager -->
 </head>
 
-<body class="">
+<body class="off-canvas-sidebar">
+<?php
+
+if($msg)
+{
+  echo '<script>swal("Well Done!", "'.$msg.'", "success");</script>';  
+}
+if($error)
+{
+  echo '<script>swal("Oops!", "'.$error.'", "error");</script>';
+}
+?>
   <!-- Extra details for Live View on GitHub Pages -->
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
-     <?php
-          include 'user_sidebar.php';
-     ?>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <?php
-          include 'header.php';
-      ?>
-      <!-- End Navbar -->
-      <?php
+  <!-- Navbar -->
+ 
+  <!-- End Navbar -->
+  <div class="wrapper wrapper-full-page">
+    <div class="page-header register-page header-filter" filter-color="black" style="background-image: url('../assets/img/register.jpg')">
+      <div class="container">
+      <div class="col-md-12">
+              <div class="card ">
+                <div class="card-header card-header-rose card-header-text">
+                  <div class="card-text">
+                    <h4 class="card-title">Personal Details</h4>
+                  </div>
+                </div>
+                <div class="card-body ">
+                  <form method="post"  class="form-horizontal">
+                   
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label"><b>Maratial Status</b></label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                        <select class="selectpicker" name="mstatus"  data-size="7" data-style="btn btn-primary btn-round" title="Single Select" required>
+                            <option disabled selected>Select Item.......</option>
+                            <option>Never Married</option>
+                            <option>Widowed</option>
+                            <option>Divorced</option>
 
-      $uid=$_SESSION['uid']; 
-      $q1="select * from user_registration1 where uid='$uid'";
-      if($r1=mysqli_query($conn,$q1))
-      {
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label"><b>Height</b></label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input type="text" name="height"  class="form-control" value="<?php echo $height?>" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label"><b>Weight</b></label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                          <input type="text" name="weight"  class="form-control" value="<?php echo $weight?>" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label"><b>Family Status</b></label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                        <select class="selectpicker" name="fstatus"  data-size="7" data-style="btn btn-primary btn-round" title="Single Select" required>
+                            <option disabled selected>Select Item.......</option>
+                               <option>Middle Class</option>
+                               <option>Upper Middle Class</option>
+                               <option>Rich</option>
+                               <option>Affluent</option>
 
-        while($num1=mysqli_fetch_assoc($r1))
-        {
-            $fname=$num1['fname'];
-            $email=$num1['email'];
-            $dob=$num1['dob'];
-            $mno=$num1['mno'];
-            $religion=$num1['religion'];
-            $mtongue=$num1['mtongue'];
-            $heducation=$num1['heducation'];
-            $degree=$num1['degree'];
-            $employeed=$num1['employeed'];
-            $about=$num1['about'];
-            $mstatus=$num1['mstatus'];
-            $fstatus=$num1['fstatus'];
-            $ftype=$num1['ftype'];
-            $fvalue=$num1['fvalue'];
-            $disability=$num1['disability'];
-            $cast=$num1['cast'];
-            $subcast=$num1['subcast'];
-            $dosh=$num1['dosh'];
-            $qualification=$num1['qualification'];
-            $hobby=$num1['hobby'];
-            $salary=$num1['salary'];
-            $address=$num1['address'];
-            $state=$num1['state'];
-            $city=$num1['city'];
-            $img=$num1['img'];
-        }
-      }
-      
-      echo '
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header card-header-icon card-header-rose">
-                  <div class="card-icon">
-                    <i class="material-icons">perm_identity</i>
-                  </div>
-                  <h4 class="card-title"><b>Profile</b> </h4>
-                </div>
-                <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Uid:</font>&nbsp;&nbsp;'.$uid.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                     
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">DOB:</font>&nbsp;&nbsp;'.$dob.'</label>
-                          <input type="email" class="form-control" disabled>
+                          </select>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
+                      <label class="col-sm-2 col-form-label"><b>Family Type</b></label>
+                      <div class="col-sm-10">
                         <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Email:</font>&nbsp;&nbsp;'.$email.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Mobile No:</font>&nbsp;&nbsp;'.$mno.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                    </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label class="bmd-label-floating"><font color="black">Religion:</font>&nbsp;&nbsp;&nbsp;'.$religion.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MotherTongue:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$mtongue.'</label>
-                            <input type="text" class="form-control" disabled>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Maratial Status:</font>&nbsp;&nbsp;&nbsp;'.$mstatus.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Family Status:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$fstatus.'</label>
-                          <input type="text" class="form-control" disabled>
+                        <select class="selectpicker" name="ftype"  data-size="7" data-style="btn btn-primary btn-round" title="Single Select" required>
+                            <option disabled selected>Select Item.......</option>
+                             <option>Joint</option>
+                             <option>Nuclear</option>
+                          </select>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="bmd-label-floating"><font color="black">Family Type:</font>&nbsp;&nbsp;&nbsp;'.$ftype.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Family Value:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$fvalue.'&nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disability:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$disability.'</label>
-                        <input type="text" class="form-control" disabled>
+                      <label class="col-sm-2 col-form-label"><b>Family Value</b></label>
+                      <div class="col-sm-10">
+                        <div class="form-group">
+                        <select class="selectpicker" name="fvalue"  data-size="7" data-style="btn btn-primary btn-round" title="Single Select" required>
+                            <option disabled selected>Select Item.......</option>
+                                <option>Orthodox</option>
+                                <option>Traditional</option>
+                                <option>Moderate</option>
+                                <option>Liberal</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label class="bmd-label-floating"><font color="black">Cast:</font>&nbsp;&nbsp;&nbsp;'.$cast.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubCast:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$subcast.'&nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosh:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$dosh.'</label>
-                      <input type="text" class="form-control" disabled>
-                    </div>
-                  </div>
-                </div>
+                    <?php
+                       if($disability == 'normal'){
+                      echo '
                     <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Highest Education:</font>&nbsp;&nbsp;'.$heducation.'</label>
-                          <input type="text" class="form-control" disabled>
+                      <label class="col-sm-2 col-form-label label-checkbox"><b>Any Disability</b></label>
+                      <div class="col-sm-10 checkbox-radios">  
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="disability" value="normal"checked> Normal
+                            <span class="circle">
+                              <span class="check"></span>
+                            </span>
+                          </label>
                         </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Degree:</font>&nbsp;&nbsp;'.$degree.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Employeed In:</font>&nbsp;&nbsp;'.$employeed.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="bmd-label-floating"><font color="black">Qualification:</font>&nbsp;&nbsp;&nbsp;'.$qualification.'</label>
-                        <input type="text" class="form-control" disabled>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating"><font color="black">Salary:</font>&nbsp;&nbsp;&nbsp;'.$salary.'</label>
-                      <input type="text" class="form-control" disabled>
-                    </div>
-                  </div>
-                  </div>
-                  <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating"><font color="black">state:</font>&nbsp;&nbsp;&nbsp;'.$state.'</label>
-                      <input type="text" class="form-control" disabled>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="bmd-label-floating"><font color="black">city:</font>&nbsp;&nbsp;&nbsp;'.$city.'</label>
-                    <input type="text" class="form-control" disabled>
-                  </div>
-                </div>
-                </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label><font color="black">Address</font></label>
-                          <div class="form-group">
-                            <label class="bmd-label-floating"></label>
-                            <textarea class="form-control" rows="5" disabled>'.$address.'</textarea>
-                          </div>
-                        </div>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="disability" value="Physical Challanged"> Physical Challanged
+                            <span class="circle">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>';
+                       }
+                       else{
+                        echo '
+                        <div class="row">
+                          <label class="col-sm-2 col-form-label label-checkbox"><b>Any Disability</b></label>
+                          <div class="col-sm-10 checkbox-radios">  
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="disability" value="normal"> Normal
+                                <span class="circle">
+                                  <span class="check"></span>
+                                </span>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="disability" value="Physical Challanged" checked> Physical Challanged
+                                <span class="circle">
+                                  <span class="check"></span>
+                                </span>
+                              </label>
+                            </div>';
+                       }
+                        ?>
+                        
                       </div>
                     </div>
-                    <button type="submit"  class="btn btn-rose pull-right"><a href="user_edit_profile.php"><font color="white">Update Profile</font></a></button>
-                    <div class="clearfix"></div>
+                    <br><br>
+                    <div class="text-center">
+                      <div class="ml-auto">
+                      <button type="submit" class="btn btn-warning" name="submit">
+                      <i class="material-icons"></i>  <b>Update</b>
+                      </button>
+                      <button type="submit" class="btn btn-success" name="next">
+                      <i class="material-icons"></i>  <b>Next</b>
+                      </button>
+                    </div>
+                    </div>
                   </form>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="#pablo">
-                    <img class="img" src="images/user/'.$img.'" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-category text-gray">Bridal / User</h6>
-                  <h4 class="card-title"><b>'.$fname.'</b></h4>
-                  <p class="card-description">
-                    '.$about.'...
-                  </p>
-                  <a href="user_change_profile.php" class="btn btn-rose btn-round">Change Profile Pic</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>';
-      ?>
-       <?php
-           include 'footer.php  ';
-       ?>
+      </div>
+      
     </div>
   </div>
-  
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <!-- Plugin for the momentJs  -->
-  <script src="../assets/js/plugins/moment.min.js"></script>
-  <!--  Plugin for Sweet Alert -->
-  <script src="../assets/js/plugins/sweetalert2.js"></script>
-  <!-- Forms Validations Plugin -->
-  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
-  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
-  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
-  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
-  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js"></script>
-  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-  <!-- Library for adding dinamically elements -->
-  <script src="../assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="../../buttons.github.io/buttons.js"></script>
+  <script async defer src="../../../../buttons.github.io/buttons.js"></script>
   <!-- Chartist JS -->
   <script src="../assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -536,6 +520,8 @@ else{
   </script>
   <!-- Sharrre libray -->
   <script src="../assets/demo/jquery.sharrre.js"></script>
+  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+
   <script>
     $(document).ready(function() {
 
@@ -609,7 +595,7 @@ else{
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s)
       }(window,
-        document, 'script', '../../connect.facebook.net/en_US/fbevents.js');
+        document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
 
       try {
         fbq('init', '111649226022273');
@@ -640,7 +626,7 @@ else{
       s = b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t, s)
     }(window,
-      document, 'script', '../../connect.facebook.net/en_US/fbevents.js');
+      document, 'script', '../../../../connect.facebook.net/en_US/fbevents.js');
 
     try {
       fbq('init', '111649226022273');
@@ -661,5 +647,5 @@ else{
 </body>
 
 
-<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/user.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:29 GMT -->
+<!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/pages/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 May 2021 09:44:28 GMT -->
 </html>

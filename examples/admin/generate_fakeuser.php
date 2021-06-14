@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
                 $q2="INSERT INTO `user_registration1` (`uid`, `fname`, `email`, `pass`, `action`, `stamp`) VALUES ('$mt1', '$fname', '$email', '$pass','1',CURRENT_TIMESTAMP())";
                 if($r2=mysqli_query($conn,$q2))
                 {
-                    $msg="<b><u>". $fname ."</u></b>". "  Register SuccesFully....We are Going To Next Page Page...";
+                    $msg="<b><u>". $fname ."</u></b>". "  Register SuccesFully....We are Going To Next Page...";
                     header("refresh:2;url=generate_fakeuser1.php?uid=$mt1");  
                 }
                 else

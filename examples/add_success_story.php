@@ -5,7 +5,7 @@
     if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']))
     {
     $uid=$_SESSION['uid'];
-    $fname="";
+    $fname=$_SESSION['fname'];
     $mno="";
     $msg="";
     $error="";
@@ -18,7 +18,6 @@
         while($num1=mysqli_fetch_assoc($r1))
         {
 
-            $fname=$num1['fname'];
             $mno=$num1['mno'];
         }
     }

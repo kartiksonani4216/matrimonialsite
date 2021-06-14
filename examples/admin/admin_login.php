@@ -162,6 +162,7 @@ if($error)
               <div class="card card-login card-hidden">
                 <div class="card-header card-header-rose text-center">
                   <h4 class="card-title">Login</h4>
+                  
                   <div class="social-line">
                     <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
                       <i class="fa fa-facebook-square"></i>
@@ -180,7 +181,7 @@ if($error)
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
-                          <i class="material-icons">face</i>
+                          <i class="material-icons">email</i>
                         </span>
                       </div>
                       <input type="text" name="email" class="form-control" placeholder="Email Address..." required>
@@ -203,7 +204,7 @@ if($error)
                       <button type="submit" class="btn btn-info btn-round btn-fill " name="submit">
                       <i class="material-icons"></i>  <b>Submit</b>
                   </button><br><br>
-                       <a href="forgot.php"><font color="red">Forget Password</font></a>
+                       <a href="forgot.php" style="color:red;"><b>Forgot Password</b></a>
                     </div>
                     </div><br><br>
               </div>

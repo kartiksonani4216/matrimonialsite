@@ -59,6 +59,9 @@ if(isset($_POST['submit']))
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.common.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
   <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -119,20 +122,14 @@ if(isset($_POST['submit']))
 </head>
 
 <body class="off-canvas-sidebar">
-<?php
+<?php 
 if($msg)
 {
-    echo '<div class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <strong>'.$msg.'</strong> 
-    </div>';
-}
-if($error)
-{
-    echo '<div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <strong>'.$error.'</strong>
-</div>';
+    echo '<script>swal("Well Done!", "'.$msg.'", "success");</script>';  
+ }
+ if($error)
+ {
+    echo '<script>swal("Oops!", "'.$error.'", "error");</script>';
 }
 ?>
   <!-- Extra details for Live View on GitHub Pages -->
@@ -181,26 +178,13 @@ if($error)
               <h2 class="card-title text-center">Register</h2>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-5 ml-auto">
-                    <div class="info info-horizontal">
-                      <div class="icon icon-rose">
-                        <i class="material-icons">assignment</i>
-                      </div>
-                      <div class="description">
-                        <h4 class="info-title">Details</h4>
-                        <p class="description">
-                          Plese Fill Original Details It Is Useful For Finding Partner.
-                        </p>
-                      </div>
-                    </div>
+                  <div class="col-md-5 ml-auto">                   
                     <div class="info info-horizontal">
                       <div class="icon icon-primary">
-                        <i class="material-icons">favorite</i>
                       </div>
                       <div class="description">
-                        <h4 class="info-title">Features</h4>
                         <p class="description">
-                          Our Team Provide  Security To The User.You Can Chat With Your Partner..
+                           <img src="../images/admin/bridal.png">
                         </p>
                       </div>
                     </div>
@@ -213,7 +197,7 @@ if($error)
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
-                              <i class="material-icons">face</i>
+                              <i class="material-icons">person</i>
                             </span>
                           </div>
                           <input type="text" name="fname" class="form-control" placeholder="Full Name..." required>
@@ -274,9 +258,7 @@ if($error)
           </div>
         </div>
       </div>
-       <?php
-        include '../footer.php';
-       ?>
+     
     </div>
   </div>
   <!--   Core JS Files   -->

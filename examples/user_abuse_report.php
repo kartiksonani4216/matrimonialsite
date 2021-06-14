@@ -192,7 +192,7 @@ else{
                                                 data-style="btn btn-primary btn-round" title="Single Select" required>
                                                 <option disabled selected>Select Item.......</option>
                                                 <?php
-                                  $q1="select * from user_registration1";
+                                  $q1="select * from user_registration1 where uid!='$uid'";
                                   if($r1=mysqli_query($conn,$q1))
                                   {
                                       while($num1=mysqli_fetch_assoc($r1))
@@ -215,7 +215,7 @@ else{
                                                 data-style="btn btn-primary btn-round" title="Single Select" required>
                                                 <option disabled selected>Select Item.......</option>
                                                 <?php
-                                $q2="select * from user_registration1";
+                                $q2="select * from user_registration1 where uid!='$uid'";
                                 if($r2=mysqli_query($conn,$q2))
                                 {
                                     while($num2=mysqli_fetch_assoc($r2))

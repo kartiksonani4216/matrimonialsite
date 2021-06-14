@@ -3,7 +3,9 @@
  include 'conn.php';
  session_start();
  if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
- {}
+ {
+   
+ }
  else{
    header("location:user/user_login.php");
  }
@@ -121,30 +123,44 @@
                             $q1="select * from success_story where  uid='$uid'";
                             if($r1=mysqli_query($conn,$q1))
                             {
-                                while($num1=mysqli_fetch_assoc($r1))
+                                $count=mysqli_num_rows($r1);
+                                if($count == 0)
                                 {
-
                                   echo '
                                   <tbody>
                                   <tr>
-                                    <td class="text-center"><font color="info">'.$num1['uid'].'</td>
-                                    <td><font color="yellow">'.$num1['fname'].'</td>
-                                    <td><font color="info">'.$num1['mno'].'</td>
-                                    <td><font color="yellow">'.$num1['title'].'</td>
-                                    <td class="td-actions text-right">
-                                      <button type="button" rel="tooltip" class="btn btn-info">
-                                        <i class="material-icons"><a href="view_full_story.php?sid='.$num1['sid'].'"><font color="white">person</font></a></i>
-                                      </button>
-                                      <button type="button" rel="tooltip" class="btn btn-success">
-                                        <i class="material-icons"><a href="edit_success_story.php?sid='.$num1['sid'].'"><font color="white">edit</font></a></i>
-                                      </button>
-                                      <button type="button" rel="tooltip" class="btn btn-danger">
-                                        <i class="material-icons"><a href="delete_success_story.php?sid='.$num1['sid'].'"><font color="white">close</font></a></i>
-                                      </button>
-                                    </td>
+                                    <td class="text-center" colspan="5"><font color="info">No Data Found</font></td>
                                   </tr>         
                                 </tbody>';
                                 }
+                                else{
+                                  
+                                  while($num1=mysqli_fetch_assoc($r1))
+                                  {
+  
+                                    echo '
+                                    <tbody>
+                                    <tr>
+                                      <td class="text-center"><font color="info">'.$num1['uid'].'</td>
+                                      <td><font color="yellow">'.$num1['fname'].'</td>
+                                      <td><font color="info">'.$num1['mno'].'</td>
+                                      <td><font color="yellow">'.$num1['title'].'</td>
+                                      <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-info">
+                                          <i class="material-icons"><a href="view_full_story.php?sid='.$num1['sid'].'"><font color="white">person</font></a></i>
+                                        </button>
+                                        <button type="button" rel="tooltip" class="btn btn-success">
+                                          <i class="material-icons"><a href="edit_success_story.php?sid='.$num1['sid'].'"><font color="white">edit</font></a></i>
+                                        </button>
+                                        <button type="button" rel="tooltip" class="btn btn-danger">
+                                          <i class="material-icons"><a href="delete_success_story.php?sid='.$num1['sid'].'"><font color="white">close</font></a></i>
+                                        </button>
+                                      </td>
+                                    </tr>         
+                                  </tbody>';
+                                  }
+                                }
+
                             }
                       
                       ?>

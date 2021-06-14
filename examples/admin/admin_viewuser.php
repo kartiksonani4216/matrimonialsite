@@ -121,10 +121,21 @@
                       <?php
                             $q1="select * from user_registration1 where account='active'";
                             if($r1=mysqli_query($conn,$q1))
-                            {
+                            { 
+                              $r12=mysqli_num_rows($r1);
+                              if($r12 == 0) 
+                              {
+                                echo '
+                                <tbody>
+                                <tr>
+                                  <td class="text-center" colspan="5"><font color="info">No Data Found</font></td>
+                                </tr>         
+                              </tbody>';
+
+                              }   
+                              else{
                                 while($num1=mysqli_fetch_assoc($r1))
                                 {
-
                                   echo '
                                   <tbody>
                                   <tr>
@@ -138,9 +149,12 @@
                                       </button>
                                     </td>
                                   </tr>         
-                                </tbody>';
+                                  </tbody>';
                                 }
+                              }
+                           
                             }
+                          
                       
                       ?>
                   

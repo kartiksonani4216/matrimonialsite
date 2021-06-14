@@ -2,28 +2,29 @@
 
     include "conn.php";
     session_start();
+    
     if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']) )
     {
        if(isset($_GET['sid']))
        {
          $sid=$_GET['sid'];
        }
+       $uid=$_SESSION['uid'];
     $fname="";
     $mno="";
     $msg="";
     $error="";
-   
-    $q1="select * from success_story where sid='$sid'";
-    if($r1=mysqli_query($conn,$q1))
+    $img="";
+    $q12="select * from success_story where sid='$sid'";
+    if($r12=mysqli_query($conn,$q12))
     {
-
-        while($num1=mysqli_fetch_assoc($r1))
-        {
-             $mno=$num1['mno'];
-            $title=$num1['title'];
-            $story=$num1['story'];
-            $img=$num1['img'];
-        }
+      while($num12=mysqli_fetch_assoc($r12))
+      {
+        $mno=$num12['mno'];
+        $title=$num12['title'];
+        $story=$num12['story'];
+        $aimg=$num12['img'];
+      }
     }
     if(isset($_POST['submit']))
     {
@@ -32,6 +33,7 @@
        $file1=$_FILES['img']['name'];
        $temp=$_FILES['img']['tmp_name'];
        move_uploaded_file($temp,"images/couple_photo/$file1");
+       unlink("images/couple_photo/$aimg");
        $q1= "UPDATE `success_story` SET `title`='$topic',`story`='$story',`img`='$file1',`stamp`=current_timestamp() WHERE sid='$sid'";
        if($r1=mysqli_query($conn,$q1))
        {
@@ -46,6 +48,8 @@
 
 
     }
+  
+   
   }
   else{
     header("location:user/user_login.php");
@@ -60,10 +64,10 @@
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon2.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard PRO by Creative Tim
+    Bridal |Update Success Story
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!-- Extra details for Live View on GitHub Pages -->
@@ -201,7 +205,7 @@
                       <h4 class="title">Upload Your Couple Photo</h4>
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
-                          <img src="images/couple_photo/<?php echo  $img; ?>" alt="..">
+                          <img src="images/couple_photo/<?php  echo $aimg?>" alt="..">
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                         <div>

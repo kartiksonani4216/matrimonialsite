@@ -3,8 +3,7 @@
 <?php 
 include '../conn.php';
 session_start();
-if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
-{
+
     $error=FALSE;
     $msg=FALSE;
     if(isset($_POST['submit']))
@@ -35,11 +34,7 @@ if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aema
           $img=$num11['aimg'];
         }  
     }
-}
-else{
 
-    header("location:admin_login.php");
-}
 ?>
 
 <!DOCTYPE html>

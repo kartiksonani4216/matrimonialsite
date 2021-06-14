@@ -123,6 +123,7 @@ if($error)
             
             <form method="post">
                 <h3>Drop Us a Message About Your Query Or Experience</h3>
+                <center><font color="red"> * We Will Reply Of Your Query Via Mail please Check Your Mail *</font></center><br>
                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -144,6 +145,8 @@ if($error)
                     <div>
                         <button type="submit" name="submit" class="btn btn-success">Send Message</button>
                         </div>    
+                        
                 </div>
             </form>
+                
 </div>

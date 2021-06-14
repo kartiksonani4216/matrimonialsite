@@ -30,18 +30,18 @@ if(isset($_POST['submit']))
                 $q5="update user_registration1 set action='5',stamp=CURRENT_TIMESTAMP() where uid='$uid'";
                 if($r5=mysqli_query($conn,$q5));
                 {
-                    $msg="<b><u>   ". $uname ."</u></b>". "  Personal Information Registered SuccesFully....We are Going Home Page...";
+                    $msg="<b><u>   ". $uname ."</u></b>". "  Professional Details Registered SuccesFully....We are Going Home Page...";
                     header("refresh:2;url=generate_fakeuser5.php?uid=$uid");
                 }
                    
             }
             else
             {
-                $error="Personal Information Registration Failed Failed .... Please Try Again ....";    
+                $error="Personal Information Registration Failed  .... Please Try Again ....";    
             }
         }
         else {
-            $error="User Already Exist...We are Going To Last Remaining Registration Step....";
+            $error="User Already Exist...We are Going To Remaining Step";
         }
     }
 }

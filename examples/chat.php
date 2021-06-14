@@ -431,6 +431,7 @@ $('#action_menu_btn').click(function(){
 									'.$n11['message'].'
 									<span class="msg_time">'.$n11['stamp'].'</span>
 								</div>
+								
 							</div>
 						';
 								}

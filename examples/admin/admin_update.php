@@ -3,18 +3,11 @@ include '../conn.php';
 session_start();
 if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
 {
-    if(isset($_GET['aid']))
-    {
-        $pid=$_SESSION['aid'];
-    }
+   
+$pid=$_SESSION['aid'];
 $msg="";
 $error="";
-if(isset($_POST['request']))
-{
  
-       header("location:findmatch.php");
-  
-}  
 
 if(isset($_POST['update']))
 {
@@ -30,6 +23,10 @@ if(isset($_POST['update']))
 }
 else{
     header("location:admin_login.php");
+}
+if(isset($_POST['back']))
+{
+    header("location:setting.php");
 }
 
 
@@ -174,7 +171,6 @@ if($error)
                   <p>
                   <button type="submit" name="update"  class="btn btn-info pull-right">Update Profile</button>
                   <button type="submit" name="back"  class="btn btn-success pull-right">Go Back</button></p>
-                
                   </div>
                 </form>
               </div>

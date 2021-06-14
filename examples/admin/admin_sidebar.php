@@ -7,17 +7,17 @@ $aimg=$_SESSION['aimg'];
 echo '
 <div class="sidebar" data-color="orange" data-background-color="black" data-image="../../assets/img/sidebar-3.jpg">
  
-      <div class="logo"><a href="http://www.creative-tim.com/" class="simple-text logo-mini">
+      <div class="logo"><a href="" class="simple-text logo-mini">
           BD
         </a>
-        <a href="http://www.creative-tim.com/" class="simple-text logo-normal">
+        <a href="" class="simple-text logo-normal">
           Bridal
         </a></div>
       <div class="sidebar-wrapper">
         <div class="user">
-          <div class="photo">
-            <img src="../images/admin/'.$aimg.'" />
-          </div>
+        <div class="photo"> 
+        <img src="../images/admin/'.$aimg.'" />
+        </div>     
           <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">
               <span>

@@ -31,7 +31,7 @@ if(isset($_POST['submit']))
                 $q5="update user_registration1 set action='4',stamp=CURRENT_TIMESTAMP() where uid='$uid'";
                 if($r5=mysqli_query($conn,$q5));
                 {
-                    $msg="<b><u>   ". $uname ."</u></b>". "  Personal Information Registered SuccesFully....We are Going To Next Step...";
+                    $msg="<b><u>   ". $uname ."</u></b>". "  Religion Details Registered SuccesFully....We are Going To Next Step...";
                     header("refresh:2;url=generate_fakeuser4.php?uid=$uid");
                 }
                    

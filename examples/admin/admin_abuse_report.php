@@ -10,7 +10,12 @@
       echo "<script>
           alert('$report');
       </script>";
-      header("refresh:1;url=admin_abuse_report.php");
+      header("refresh:0;url=admin_abuse_report.php");
+ }
+ if(isset($_POST['delete']))
+ {
+   $aid=$_POST['aid']; 
+   header("location:delete_abuse_report.php?aid=$aid");
  }
  }
  else{
@@ -130,6 +135,17 @@
                             $q1="select * from abuse_report";
                             if($r1=mysqli_query($conn,$q1))
                             {
+                              $r12=mysqli_num_rows($r1);
+                              if($r12 == 0)
+                              {
+                                echo '
+                                <tbody>
+                                <tr>
+                                  <td class="text-center" colspan="5"><font color="info">No Data Found</font></td>
+                                </tr>         
+                              </tbody>';
+                              }
+                              else{
                                 while($num1=mysqli_fetch_assoc($r1))
                                 {
 
@@ -144,13 +160,19 @@
                                     <td class="td-actions text-right">
                                       <input type="hidden" name="report" value="'.$num1['report'].'" >
                                       <button type="submit" name="submit"  rel="tooltip" class="btn btn-info">
-                                        <i class="material-icons"><a href="admin_blockprofile.php"><font color="white">person</font></a></i>
+                                        <i class="material-icons"><a href="admin_blockprofile.php"><font color="white">person</font></a></i>&nbsp;
                                       </button>
+                                      <input type="hidden" name="aid" value="'.$num1['aid'].'" >
+                                      <button type="submit" name="delete"  rel="tooltip" class="btn btn-danger">
+                                      <i class="material-icons">delete</i>
+                                    </button>
                                     </td>
                                   </tr>         
                                 </tbody>
                                 </form>';
                                 }
+                              }
+                              
                             }
                       
                       ?>

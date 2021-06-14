@@ -124,24 +124,41 @@ else{
                             $q1="select * from user_registration1 where account='block'";
                             if($r1=mysqli_query($conn,$q1))
                             {
+                              $r12=mysqli_num_rows($r1);
+                               if($r12 == 0)
+                               {
+
+                                echo '
+                                <tbody>
+                                <tr>
+                                  <td class="text-center" colspan="5"><font color="info">No Data Found</font></td>
+                                </tr>         
+                              </tbody>';
+                               }
+                               else{
                                 while($num1=mysqli_fetch_assoc($r1))
                                 {
-
-                                  echo '
-                                  <tbody>
-                                  <tr>
-                                    <td class="text-center"><font color="info">'.$num1['uid'].'</td>
-                                    <td><font color="yellow">'.$num1['fname'].'</td>
-                                    <td><font color="info">'.$num1['mno'].'</td>
-                                    <td><font color="yellow">'.$num1['dob'].'</td>
-                                    <td class="td-actions text-right">
-                                      <button type="button"  rel="tooltip" class="btn btn-info">
-                                        <i class="material-icons"><a href="admin_blockprofile.php?uid='.$num1['uid'].'"><font color="white">person</font></a></i>
-                                      </button>
-                                    </td>
-                                  </tr>         
-                                </tbody>';
+                                    
+                                    
+                                      echo '
+                                      <tbody>
+                                      <tr>
+                                        <td class="text-center"><font color="info">'.$num1['uid'].'</td>
+                                        <td><font color="yellow">'.$num1['fname'].'</td>
+                                        <td><font color="info">'.$num1['mno'].'</td>
+                                        <td><font color="yellow">'.$num1['dob'].'</td>
+                                        <td class="td-actions text-right">
+                                          <button type="button"  rel="tooltip" class="btn btn-info">
+                                            <i class="material-icons"><a href="admin_blockprofile.php?uid='.$num1['uid'].'"><font color="white">person</font></a></i>
+                                          </button>
+                                        </td>
+                                      </tr>         
+                                    </tbody>';
+                
+                                
                                 }
+                               }
+                               
                             }
                       
                       ?>

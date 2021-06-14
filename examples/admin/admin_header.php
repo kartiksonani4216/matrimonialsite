@@ -4,6 +4,37 @@ if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aema
   $date=date("Y-m-d");
 $count=0;
 $count1=0;
+$count4=0;
+$count5=0;
+$q20="select * from abuse_report";
+if($r20=mysqli_query($conn,$q20))
+{
+    while($num20=mysqli_fetch_assoc($r20))
+     {
+          $cdate=$num20['stamp'];
+          $cdate=substr($cdate,0,10);
+         if($date == $cdate)
+        {         
+            $count4++;
+        }
+     }
+}
+$q21="select * from success_story";
+if($r21=mysqli_query($conn,$q21))
+{
+    while($num21=mysqli_fetch_assoc($r21))
+    {
+      $cdate2=$num21['stamp'];
+      $cdate2=substr($cdate2,0,10);
+      if($date == $cdate2)
+      {
+       
+          $count5++;
+      }
+   
+    }
+}
+$count6=$count4+$count5;
   echo '<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div class="container-fluid">
     <div class="navbar-wrapper">
@@ -22,20 +53,13 @@ $count1=0;
       <span class="navbar-toggler-icon icon-bar"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end">
-      <form class="navbar-form">
-        <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
-          <button type="submit" class="btn btn-white btn-round btn-just-icon">
-            <i class="material-icons">search</i>
-            <div class="ripple-container"></div>
-          </button>
-        </div>
-      </form>
+      
       <ul class="navbar-nav">
       
         <li class="nav-item dropdown">
           <a class="nav-link" href="http://example.com/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">notifications</i>
+            <span class="notification">'.$count6.'</span>
             <p class="d-lg-none d-md-block">
               Some Actions
             </p>

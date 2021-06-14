@@ -18,7 +18,7 @@ if(isset($_POST['submit']))
   if($r1=mysqli_query($conn,$q1))
   {
      $msg="Photo Added SuccessFully";
-     header("refresh:2;url=flip.php");
+     header("refresh:0;url=user_add_photo.php");
   }
   else{
     $error="Photo Not Upload ";

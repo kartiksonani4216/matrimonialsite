@@ -58,6 +58,7 @@
    }
    else{
        header("location:user/user_login.php");
+       }
 
 ?>
 <!DOCTYPE html>
@@ -217,9 +218,7 @@
                                       </div>                      ';
                                     }
                                 }
-                                else{
-                                  echo "now losee";
-                                }
+                               
                               }
                             }
                             else{

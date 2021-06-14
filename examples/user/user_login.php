@@ -55,7 +55,7 @@
   {
     $email=$_POST['email'];
     $pass=$_POST['pass'];
-    $q1="select * from user_registration1 where email='$email'";
+    $q1="select * from user_registration1 where email='$email' and account='active' or  account=''";
     if($r1=mysqli_query($conn,$q1))
     {
       $n1=mysqli_num_rows($r1);
@@ -102,7 +102,7 @@
               }
               if($action == 7)
               {
-                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". " Already Complete This Session....Go To Home Page";
+                  $msg="<b><u>   ". $n2['fname'] ."</u></b>". "Login SuccessFully.....";
                   header("refresh:2;url=../dashboard.php");
               }
             
@@ -116,7 +116,7 @@
       }
       else
       {
-        $error="Provide Email Does Not Exist....Please Try Again....";
+        $error="Provide Email Does Not Exist..Or..Your Account Is Blocked By Admin";
       }
     }
   }
@@ -268,7 +268,7 @@ if($error)
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
-                          <i class="material-icons">face</i>
+                          <i class="material-icons">email</i>
                         </span>
                       </div>
                       <input type="text" name="email" class="form-control" placeholder="Email Address..." required>

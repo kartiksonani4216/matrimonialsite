@@ -7,6 +7,10 @@ else
 {
   header("location:user/user_login.php");
 }
+if(isset($_POST['update']))
+{
+  header("location:user_edit_profile.php");
+}
 
 ?>
 
@@ -140,7 +144,7 @@ else
                   <h4 class="card-title"><b>Profile</b> </h4>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form method="post">
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group">
@@ -261,7 +265,7 @@ else
                         </div>
                       </div>
                     </div>
-                    <button type="submit"  class="btn btn-rose pull-right"><a href="user_edit_profile.php"><font color="white">Update Profile</font></a></button>
+                    <button type="submit" name="update"  class="btn btn-rose pull-right">Update Profile</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>

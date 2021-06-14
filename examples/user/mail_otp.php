@@ -2,8 +2,7 @@
   include '../conn.php';
 
     session_start();
-    if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']))
-    {
+   
     $error=FALSE;
     $msg=FALSE;
     
@@ -60,10 +59,7 @@
             $img=$num11['aimg'];
           }
         }    
-    }
-    else{
-      header("location:user_login.php");
-    }
+  
  ?>
 <!DOCTYPE html>
 <html lang="en">
