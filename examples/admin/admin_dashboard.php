@@ -131,7 +131,7 @@ if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aema
     header("location:admin_login.php");
   }
  ?>
-    <div class="main-panel">
+    <div class="main-panel" style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
       <!-- Navbar -->
        <?php
             if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aemail']) && isset($_SESSION['aimg']))
@@ -260,7 +260,7 @@ if(isset($_SESSION['aname']) && isset($_SESSION['aid']) && isset($_SESSION['aema
                 </div>
               </div>
             </div>
-            <h3>Couple Photo</h3>
+            <h3><font color='white'><b>Couple Photo</b></font></h3>
             <br>
             <div class="row">
               <div class="col-md-4">

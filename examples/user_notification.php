@@ -94,7 +94,7 @@ if(isset($_POST['view']))
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../assets/img/login.jpg'); background-size: cover; background-position: top center;">
     <?php
     
     include 'user_sidebar.php';
@@ -112,7 +112,7 @@ if(isset($_POST['view']))
            
            
             <div class="col-md-12">
-              <div class="card">
+              <div class="card" style="opacity:0.7;">
                 <div class="card-header card-header-rose card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">notifications</i>
@@ -124,11 +124,11 @@ if(isset($_POST['view']))
                     <table class="table table-shopping">
                       <thead>
                         <tr>
-                          <th class="text-center"><b>profile</b></th>
-                          <th><b>Name</b></th>
-                          <th class="th-description"><b>Uid</b></th>
-                          <th class="th-description"><b>Time</b></th>
-                          <th class="text-right"><b>View Profile</b></th>
+                          <th class="text-center"><font style="font-weight:bold">profile</font></th>
+                          <th><font style="font-weight:bold">Name</font></th>
+                          <th class="th-description"><font style="font-weight:bold">Uid</font></th>
+                          <th class="th-description"><font style="font-weight:bold">Time</font></th>
+                          <th class="text-right"><font style="font-weight:bold">View Profile</font></th>
                           <th></th>
                         </tr>
                       </thead>
@@ -149,18 +149,18 @@ if(isset($_POST['view']))
                                           <tr>
                                             <td>
                                               <div class="img-container">
-                                                <img src="images/user/'.$num1['img'].'" alt="...">
+                                                <a href="images/user/'.$num1['img'].'" target="_blank"><img src="images/user/'.$num1['img'].'" alt="..."></a>
                                               </div>
                                             </td>
                                             <td class="td-name">
-                                            <font color="purple">  '.$num1['fname'].'</font>
+                                            <font color="purple" style="font-weight:bold;">  '.$num1['fname'].'</font>
                                               <br />
                                             </td>
                                             <td>
-                                             <b><font color="black"> '.$num1['uid'].'</font></b>
+                                             <b><font color="black" style="font-weight:bold;"> '.$num1['uid'].'</font></b>
                                             </td>
                                             <td>
-                                             <b><font color="black"> '.$num1['stamp'].'</font></b>
+                                             <b><font color="black" style="font-weight:bold;"> '.$num1['stamp'].'</font></b>
                                             </td>
                                             <td class="td-actions text-right">
                                             <form method="post">

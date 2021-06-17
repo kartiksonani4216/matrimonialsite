@@ -148,24 +148,9 @@ if($msg)
         <span class="navbar-toggler-icon icon-bar"></span>
         <span class="navbar-toggler-icon icon-bar"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-        
-          <li class="nav-item  active ">
-            <a href="register.html" class="nav-link">
-              <i class="material-icons">person_add</i>
-              Register
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a href="user_login.php" class="nav-link">
-              <i class="material-icons">fingerprint</i>
-              Login
-            </a>
-          </li>
-        
-        </ul>
-      </div>
+       <?php
+          include 'login_navbar.php';
+       ?>
     </div>
   </nav>
   <!-- End Navbar -->

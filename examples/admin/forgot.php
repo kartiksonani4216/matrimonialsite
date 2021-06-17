@@ -80,7 +80,7 @@ session_start();
             }
             ?>
         <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center auth">
+            <div class="content-wrapper d-flex align-items-center auth" style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
                 <div class="row flex-grow">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">

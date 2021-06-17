@@ -115,7 +115,7 @@ else{
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../assets/img/login.jpg'); background-size: cover; background-position: top center;">
        <?php
           include 'user_sidebar.php';
        ?>
@@ -129,7 +129,7 @@ else{
         <div class="container-fluid">
           <div class="col-md-6 col-10 mr-auto ml-auto">
             <!--      Wizard container        -->
-            <div class="wizard-container">
+            <div class="wizard-container" style="opacity:0.8;">
               <div class="card card-wizard" data-color="rose" id="wizardProfile">
                 <form  method="post" enctype="multipart/form-data">
                   <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->

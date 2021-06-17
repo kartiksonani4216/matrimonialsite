@@ -99,7 +99,7 @@ body{
 
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container contact-form">
+<div class="container contact-form" >
 
 <?php
 

@@ -79,7 +79,7 @@ else{
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
     <?php  
        include 'admin_sidebar.php';
     ?>
@@ -95,12 +95,12 @@ else{
             
            
             <div class="col-md-12">
-              <div class="card">
+              <div class="card" style="opacity:0.7;">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">photo</i>
                   </div>
-                  <h4 class="card-title">User Uploaded Photos</h4>
+                  <h4 class="card-title"><b>User Uploaded Photos</b></h4>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -108,9 +108,9 @@ else{
                       <thead>
                         <tr>
                           <th class="text-center"></th>
-                          <th>uname</th>
-                          <th class="th-description">Uploaded On</th>
-                          <th class="th-description">Action</th>
+                          <th><b>uname</b></th>
+                          <th class="th-description"><b>Uploaded On</b></th>
+                          <th class="th-description"><b>Action</b></th>
                           <th></th>
                         </tr>
                       </thead>
@@ -140,11 +140,11 @@ else{
                                         </div>
                                       </td>
                                       <td class="td-name">
-                                        <a href="#jacket">'.$fname.'</a>
+                                        <a><font color="purple" style="font-weight:bold;">'.$fname.'</font></a>
                                         <br />
                                       </td>
                                       <td>
-                                        '.$num12['stamp'].'
+                                      <font color="blue" style="font-weight:bold;">'.$num12['stamp'].'</font>
                                       </td>
                                       <td>
                                        <button type="button" class="btn btn-danger"><a href="delete_album.php?pid='.$pid.'"><font color="white">Remove</font></a></button>

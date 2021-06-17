@@ -100,16 +100,14 @@ else{
 
 
         background-image: linear-gradient(45deg,
-                #CA4246 16.666%,
-                #E16541 16.666%,
-                #E16541 33.333%,
-                #F18F43 33.333%,
-                #F18F43 50%,
-                #8B9862 50%,
-                #8B9862 66.666%,
-                #476098 66.666%,
-                #476098 83.333%,
-                #A7489B 83.333%);
+        purple 16.666%,
+                blue 16.666%,
+                skyblue 33.333%,
+                red 33.333%,
+                purple 38%,
+                blue 48%,
+                skyblue 66.666%,
+                red 66.666%);
 
         background-size: 100%;
         background-repeat: repeat;
@@ -186,7 +184,7 @@ else{
 </head>
 
 <body>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="background-image: url('../assets/img/login.jpg'); background-size: cover; background-position: top center;">
         <div class="page-header">
             <h1 class="gradient-text">Your Followers</h1>
             <nav aria-label="breadcrumb">

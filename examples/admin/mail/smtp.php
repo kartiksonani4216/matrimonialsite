@@ -33,7 +33,7 @@ $mail->Username = 'kartiksonani2821@gmail.com';
 //Password to use for SMTP authentication
 $mail->Password = "kartik&2821";
 //Set who the message is to be sent from
-$mail->setFrom($email, 'Kartik Sonani');
+$mail->setFrom($email, 'Bridal Matrimonial System');
 //Set an alternative reply-to address
 $mail->addReplyTo($email, '');
 //Set who the message is to be sent to

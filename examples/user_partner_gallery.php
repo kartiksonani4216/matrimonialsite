@@ -59,7 +59,7 @@ if(isset($_POST['unlike']))
     <link rel="shortcut icon" href="../assets2/images/favicon3.png" />
   </head>
   <body>
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background-image: url('../assets/img/login.jpg'); background-size: cover; background-position: top center;">
             <div class="page-header">
               <h3 class="page-title"> Gallery </h3>
               <nav aria-label="breadcrumb">
@@ -72,7 +72,7 @@ if(isset($_POST['unlike']))
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <div class="card-body">
+                  <div class="card-body" >
                     <div class="row">
                       <div class="col-12">
                         <div class="row portfolio-grid">
@@ -272,8 +272,7 @@ if(isset($_POST['unlike']))
           <footer class="footer">
             <div class="footer-inner-wraper">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021 <a href="https://www.bootstrapdash.com/" target="_blank"></a>Bridal For Better Partner. All rights reserved.</span>
               </div>
             </div>
           </footer>

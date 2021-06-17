@@ -143,7 +143,7 @@ else{
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div class="wrapper ">
+    <div class="wrapper " style="background-image: url('../assets/img/login.jpg'); background-size: cover; background-position: top center;">
         <?php
        include 'user_sidebar.php';
     ?>

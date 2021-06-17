@@ -82,7 +82,7 @@
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
     <?php  
        include 'admin_sidebar.php';
     ?>
@@ -98,23 +98,23 @@
             
            
             <div class="col-md-12">
-              <div class="card">
+              <div class="card" style="opacity:0.7;">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">photo</i>
                   </div>
-                  <h4 class="card-title">User Success Story</h4>
+                  <h4 class="card-title"><b>User Success Story</b></h4>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table table-shopping">
                       <thead>
                         <tr>
-                          <th class="text-center">Couple Photo</th>
-                          <th>uname</th>
-                          <th>Mno</th>
-                          <th class="th-description">Title</th>
-                          <th class="th-description">Action</th>
+                          <th class="text-center"><b>Couple Photo</b></th>
+                          <th><b>uname</b></th>
+                          <th><b>Mno</b></th>
+                          <th class="th-description"><b>Title</b></th>
+                          <th class="th-description"><b>Action</b></th>
                           <th></th>
                         </tr>
                       </thead>
@@ -132,17 +132,17 @@
                                     echo '  <tbody>
                                     <tr>
                                       <td>
-                                        <div class="img-container">
-                                          <img src="../images/couple_photo/'.$num12['img'].'" alt="...">
+                                        <div class="img-container" ">
+                                         <a href="../images/couple_photo/'.$num12['img'].'" target="_blank"> <img src="../images/couple_photo/'.$num12['img'].'" alt="..."></a>
                                         </div>
                                       </td>
-                                      <td ><font color="purple"><b>'.$num12['fname'].'<b></font></td>
+                                      <td ><font size="5" color="purple" style="font-weight:bold;"><b>'.$num12['fname'].'<b></font></td>
                                       <td>
-                                        '.$num12['mno'].'
+                                        <font color="blue" style="font-weight:bold;">'.$num12['mno'].'</font>
                                         <br />
                                       </td>
                                       <td>
-                                        '.$num12['title'].'
+                                        <font color="blue" style="font-weight:bold">'.$num12['title'].'</font>
                                       </td>
                                       <td>
                                        <button type="button" class="btn btn-success"><a href="view_story.php?sid='.$num12['sid'].'"><font color="white">View</font></a></button>

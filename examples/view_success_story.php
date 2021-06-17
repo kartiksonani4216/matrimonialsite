@@ -82,7 +82,7 @@
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../assets/img/login.jpg'); background-size: cover; background-position: top center;">
      <?php
       include 'user_sidebar.php';
      
@@ -96,24 +96,24 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-12">
-              <div class="card" style="background-color:black;">
+            <div class="col-md-12" style="opacity:0.7;">
+              <div class="card" style="background-color:white;">
                 <div class="card-header card-header-rose card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">assignment</i>
                   </div>
                   <h4 class="card-title"><font color="red" size="6"><b>Success Story</b></font></h4>
                 </div>
-                <div class="card-body" style="background-color:black;">
+                <div class="card-body" style="background-color:white;">
                   <div class="table-responsive">
-                    <table class="table" style="background-color:black;">
+                    <table class="table" style="background-color:white;">
                       <thead>
                         <tr>
                           
-                          <th class="text-center"><font color="white">id</font></th>
-                          <th><font color="white">Name</font></th>
-                          <th><font color="white">Mno</font></th>
-                          <th><font color="white">Title</font></th>
+                          <th class="text-center"><font color="black"><b>ID</b></font></th>
+                          <th><font color="black"><b>Name</b></font></th>
+                          <th><font color="black"><b>Mno</b></font></th>
+                          <th><font color="black"><b>Title</b></font></th>
                           <th class="text-right"><font color="white">Actions</font></th>
  
                         </tr>
@@ -141,10 +141,10 @@
                                     echo '
                                     <tbody>
                                     <tr>
-                                      <td class="text-center"><font color="info">'.$num1['uid'].'</td>
-                                      <td><font color="yellow">'.$num1['fname'].'</td>
-                                      <td><font color="info">'.$num1['mno'].'</td>
-                                      <td><font color="yellow">'.$num1['title'].'</td>
+                                      <td class="text-center"><font color="purple" style="font-weight:bold;">'.$num1['uid'].'</td>
+                                      <td><font color="blue" style="font-weight:bold;" size="4"><b>'.$num1['fname'].'</b></td>
+                                      <td><font color="purple" style="font-weight:bold;"><b>'.$num1['mno'].'</b></td>
+                                      <td><font color="blue" style="font-weight:bold;" size="4"><b>'.$num1['title'].'</b></td>
                                       <td class="td-actions text-right">
                                         <button type="button" rel="tooltip" class="btn btn-info">
                                           <i class="material-icons"><a href="view_full_story.php?sid='.$num1['sid'].'"><font color="white">person</font></a></i>
@@ -153,7 +153,7 @@
                                           <i class="material-icons"><a href="edit_success_story.php?sid='.$num1['sid'].'"><font color="white">edit</font></a></i>
                                         </button>
                                         <button type="button" rel="tooltip" class="btn btn-danger">
-                                          <i class="material-icons"><a href="delete_success_story.php?sid='.$num1['sid'].'"><font color="white">close</font></a></i>
+                                          <i class="material-icons"><a href="delete_success_story.php?sid='.$num1['sid'].'"><font color="white">delete</font></a></i>
                                         </button>
                                       </td>
                                     </tr>         

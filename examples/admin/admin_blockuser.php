@@ -83,7 +83,7 @@ else{
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
      <?php
       include 'admin_sidebar.php';
      
@@ -98,25 +98,25 @@ else{
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card" style="background-color:black;">
+              <div class="card" style="background-color:white;opacity:0.6;">
                 <div class="card-header card-header-rose card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">people</i>
                   </div>
                   <h4 class="card-title"><font color="red" size="6"><b>Block User</b></font></h4>
                 </div>
-                <div class="card-body" style="background-color:black;">
+                <div class="card-body" style="background-color:white;">
                   <div class="table-responsive">
                    <form method="post">
-                    <table class="table" style="background-color:black;">
+                    <table class="table" style="background-color:white;">
                       <thead>
                         <tr>
                           
-                          <th class="text-center"><font color="white">Uid</font></th>
-                          <th><font color="white">Name</font></th>
-                          <th><font color="white">Mno</font></th>
-                          <th><font color="white">Dob</font></th>
-                          <th class="text-right"><font color="white">Actions</font></th>
+                          <th class="text-center"><font color="black"><b>Uid</b></font></th>
+                          <th><font color="black"><b>Name</font></th>
+                          <th><font color="black"><b>Mno</font></th>
+                          <th><font color="black"><b>Dob</font></th>
+                          <th class="text-right"><font color="black"><b>Actions</font></th>
  
                         </tr>
                       </thead>
@@ -131,7 +131,7 @@ else{
                                 echo '
                                 <tbody>
                                 <tr>
-                                  <td class="text-center" colspan="5"><font color="info">No Data Found</font></td>
+                                  <td class="text-center" colspan="5"><font color="grey"><b>No Data Found</b></font></td>
                                 </tr>         
                               </tbody>';
                                }
@@ -143,10 +143,10 @@ else{
                                       echo '
                                       <tbody>
                                       <tr>
-                                        <td class="text-center"><font color="info">'.$num1['uid'].'</td>
-                                        <td><font color="yellow">'.$num1['fname'].'</td>
-                                        <td><font color="info">'.$num1['mno'].'</td>
-                                        <td><font color="yellow">'.$num1['dob'].'</td>
+                                        <td class="text-center"><font color="purple" style="font-weight:bold;">'.$num1['uid'].'</td>
+                                        <td><font color="blue" style="font-weight:bold;">'.$num1['fname'].'</td>
+                                        <td><font color="purple" style="font-weight:bold;">'.$num1['mno'].'</td>
+                                        <td><font color="blue" style="font-weight:bold;">'.$num1['dob'].'</td>
                                         <td class="td-actions text-right">
                                           <button type="button"  rel="tooltip" class="btn btn-info">
                                             <i class="material-icons"><a href="admin_blockprofile.php?uid='.$num1['uid'].'"><font color="white">person</font></a></i>

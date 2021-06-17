@@ -38,6 +38,7 @@ else{
   header("location:admin_login.php");
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +125,7 @@ if($error)
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
    
     <div class="main-panel">
       <!-- Navbar -->
@@ -132,6 +133,7 @@ if($error)
       <!-- End Navbar -->
       <?php
 
+     
       $q1="select * from user_registration1 where uid='$pid'";
       if($r1=mysqli_query($conn,$q1))
       {
@@ -168,59 +170,51 @@ if($error)
       
       echo '
       <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header card-header-icon card-header-rose">
-                  <div class="card-icon">
-                    <i class="material-icons">perm_identity</i>
-                  </div>
-                  <h4 class="card-title"><b>Profile</b> </h4>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card" style="opacity:0.7">
+              <div class="card-header card-header-icon card-header-rose">
+                <div class="card-icon">
+                  <i class="material-icons">perm_identity</i>
                 </div>
-                <div class="card-body">
-                  <form method="post">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Uid:</font>&nbsp;&nbsp;'.$pid.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                     
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">DOB:</font>&nbsp;&nbsp;'.$dob.'</label>
-                          <input type="email" class="form-control" disabled>
-                        </div>
+                <h4 class="card-title"><b>Profile</b> </h4>
+              </div>
+              <div class="card-body">
+                <form method="post">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <label class="bmd-label-floating"><font color="black"><b>Uid</b>:</font>&nbsp;&nbsp;<font color="blue"><b>'.$pid.'</b></font></label>
+                        <input type="text" class="form-control" disabled>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Email:</font>&nbsp;&nbsp;'.$email.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Mobile No:</font>&nbsp;&nbsp;'.$mno.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
+                   
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating"><font color="black"><b>DOB:</b></font>&nbsp;&nbsp;<font color="blue"><b>'.$dob.'</b></font></label>
+                        <input type="email" class="form-control" disabled>
                       </div>
                     </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label class="bmd-label-floating"><font color="black">Religion:</font>&nbsp;&nbsp;&nbsp;'.$religion.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MotherTongue:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$mtongue.'</label>
-                            <input type="text" class="form-control" disabled>
-                          </div>
-                        </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating"><font color="black"><b>Email:</b></font>&nbsp;&nbsp;<font color="blue"><b>'.$email.'</b></font></label>
+                        <input type="text" class="form-control" disabled>
                       </div>
-                      <div class="row">
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating"><font color="black"><b>Mobile No:</b></font>&nbsp;&nbsp;<font color="blue"><b>'.$mno.'</b></font></label>
+                        <input type="text" class="form-control" disabled>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Maratial Status:</font>&nbsp;&nbsp;&nbsp;'.$mstatus.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Family Status:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$fstatus.'</label>
+                          <label class="bmd-label-floating"><font color="black"><b>Religion:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$religion.' </b></font> &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MotherTongue:</b></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$mtongue.'</b></font></label>
                           <input type="text" class="form-control" disabled>
                         </div>
                       </div>
@@ -228,7 +222,7 @@ if($error)
                     <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label class="bmd-label-floating"><font color="black">Family Type:</font>&nbsp;&nbsp;&nbsp;'.$ftype.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Family Value:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$fvalue.'&nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Disability:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$disability.'</label>
+                        <label class="bmd-label-floating"><font color="black"><b>Maratial Status:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$mstatus.' </b></font> &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Family Status:</b></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$fstatus.'</b></font></label>
                         <input type="text" class="form-control" disabled>
                       </div>
                     </div>
@@ -236,96 +230,104 @@ if($error)
                   <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating"><font color="black">Cast:</font>&nbsp;&nbsp;&nbsp;'.$cast.'  &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubCast:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$subcast.'&nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosh:</font>&nbsp;&nbsp;&nbsp;&nbsp;'.$dosh.'</label>
+                      <label class="bmd-label-floating"><font color="black"><b>Family Type:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$ftype.' </b></font> &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Family Value:</b></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$fvalue.'</b></font>&nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Disability:</b></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$disability.'</b></font></label>
                       <input type="text" class="form-control" disabled>
                     </div>
                   </div>
                 </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Highest Education:</font>&nbsp;&nbsp;'.$heducation.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Degree:</font>&nbsp;&nbsp;'.$degree.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating"><font color="black">Employeed In:</font>&nbsp;&nbsp;'.$employeed.'</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-6">
+                <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating"><font color="black"><b>Cast:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$cast.' </b></font> &nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SubCast:</b></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$subcast.'</b></font>&nbsp;&nbsp;&nbsp;&nbsp;,<font color="black"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Dosh:</b></font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$dosh.'</b></font></label>
+                    <input type="text" class="form-control" disabled>
+                  </div>
+                </div>
+              </div>
+                  <div class="row">
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <label class="bmd-label-floating"><font color="black">Qualification:</font>&nbsp;&nbsp;&nbsp;'.$qualification.'</label>
+                        <label class="bmd-label-floating"><font color="black"><b>Highest Education:</b></font>&nbsp;&nbsp;<font color="blue"><b>'.$heducation.'</b></font></label>
                         <input type="text" class="form-control" disabled>
                       </div>
                     </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating"><font color="black">Salary:</font>&nbsp;&nbsp;&nbsp;'.$salary.'</label>
-                      <input type="text" class="form-control" disabled>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating"><font color="black"><b>Degree:</b></font>&nbsp;&nbsp;<font color="blue"><b>'.$degree.'</b></font></label>
+                        <input type="text" class="form-control" disabled>
+                      </div>
                     </div>
-                  </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating"><font color="black"><b>Employeed In:</b></font>&nbsp;&nbsp;<font color="blue"><b>'.$employeed.'</b></font></label>
+                        <input type="text" class="form-control" disabled>
+                      </div>
+                    </div>
                   </div>
                   <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="bmd-label-floating"><font color="black">state:</font>&nbsp;&nbsp;&nbsp;'.$state.'</label>
+                      <label class="bmd-label-floating"><font color="black"><b>Qualification:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$qualification.'</b></font></label>
                       <input type="text" class="form-control" disabled>
                     </div>
                   </div>
                   <div class="col-md-6">
                   <div class="form-group">
-                    <label class="bmd-label-floating"><font color="black">city:</font>&nbsp;&nbsp;&nbsp;'.$city.'</label>
+                    <label class="bmd-label-floating"><font color="black"><b>Salary:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$salary.'</b></font></label>
                     <input type="text" class="form-control" disabled>
                   </div>
                 </div>
                 </div>
-                    <div class="row">
-                      <div class="col-md-12">
+                <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating"><font color="black"><b>state:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$state.'</b></font></label>
+                    <input type="text" class="form-control" disabled>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating"><font color="black"><b>city:</b></font>&nbsp;&nbsp;&nbsp;<font color="blue"><b>'.$city.'</b></font></label>
+                  <input type="text" class="form-control" disabled>
+                </div>
+              </div>
+              </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label><font color="black"><b>Address</b></font></label>
                         <div class="form-group">
-                          <label><font color="black">Address</font></label>
-                          <div class="form-group">
-                            <label class="bmd-label-floating"></label>
-                            <textarea class="form-control" rows="5" disabled>'.$address.'</textarea>
-                          </div>
+                          <label class="bmd-label-floating"></label>
+                          <textarea class="form-control" rows="5" disabled style="color:blue;font-weight:bold;">'.$address.'</textarea>
                         </div>
                       </div>
                     </div>
-                    <button class="btn btn-success" type="submit" name="submit">UnblockUser</button>
-                    <div class="clearfix"></div>
-                  </form>
-                </div>
+                  </div>
+                  <button class="btn btn-success" type="submit" name="submit">UnblockUser</button>
+                  <div class="clearfix"></div>
+                </form>
               </div>
             </div>
-            
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="../images/user/'.$img.'" target="blank">
-                    <img class="img" src="../images/user/'.$img.'" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-category text-gray">Bridal / User</h6>
-                  <h4 class="card-title"><b>'.$fname.'</b></h4>
-                  <p class="card-description">
-                    '.$about.'... <br>
-                  <button class="btn btn-danger"><a href="admin_blockuser.php"><font color="white">Go Back</font></a></button></p>
-                </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-profile" style="opacity:0.7;">
+              <div class="card-avatar">
+                <a href="../images/user/'.$img.'" target="blank">
+                  <img class="img" src="../images/user/'.$img.'" />
+                </a>
+              </div>
+              <div class="card-body">
+                <font size="5" style="font-weight:bold;">'.$fname.'</font><br><br>
+                <p class="card-description"><font color="blue" style="font-weight:bold;">
+                  '.$about.'</font>...<br>
+
+                  <button class="btn btn-danger"><a href="admin_viewuser.php"><font color="white">Go Back</font></a></button>
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </div>';
+      </div>
+    </div>';
       ?>
     
     </div>

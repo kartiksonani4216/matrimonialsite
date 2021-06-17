@@ -97,7 +97,7 @@ else{
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
     <?php
           include 'admin_sidebar.php';
     ?>
@@ -111,7 +111,7 @@ else{
         <div class="container-fluid">
           <div class="row">
               <center>
-            <div class="col-md-7">
+            <div class="col-md-7" style="opacity:0.7;">
               <div class="row">
                 <div class="col-md-15">
                   <div class="card card-testimonial">
@@ -119,15 +119,15 @@ else{
                       <i class="material-icons"><font color="red">favorite</font></i>
                     </div>
                     <div class="card-body" style="height:160px;width:500px;">
-                      <h5 class="card-description">
+                        <font color="purple" style="font-weight:bold;" size="5">
                            <?php
                                echo $story;
                            ?>
-                      </h5>
+                      </font>
                     </div>
                     <div class="card-footer">
-                      <h4 class="card-title"><?php echo $fname ;?></h4>
-                      <h6 class="card-category">@user</h6>
+                      <font color="blue" style="font-weight:bold;" size="4"><?php echo $fname ;?></font><br>
+                      <font style="font-weight:bold;" color="black">@user</font>
                       <div class="card-avatar">
                         <a href="../images/couple_photo/<?php echo $img?>" target="_blank">
                           <img class="img" src="../images/couple_photo/<?php echo $img?>" />

@@ -94,7 +94,7 @@
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
      <?php
       include 'admin_sidebar.php';
      
@@ -109,25 +109,25 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <div class="card" style="background-color:black;">
+              <div class="card" style="background-color:white;opacity:0.7;">
                 <div class="card-header card-header-rose card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">mail</i>
                   </div>
                   <h4 class="card-title"><font color="red" size="6"><b>Abuse Report</b></font></h4>
                 </div>
-                <div class="card-body" style="background-color:black;">
+                <div class="card-body" style="background-color:white;">
                   <div class="table-responsive">
                    <form method="post">
-                    <table class="table" style="background-color:black;">
+                    <table class="table" style="background-color:white;">
                       <thead>
                         <tr>
                           
-                          <th class="text-center"><font color="white">Uid</font></th>
-                          <th><font color="white">Name</font></th>
-                          <th><font color="white">Abuse Uid</font></th>
-                          <th><font color="white">Abuse Uname</font></th>
-                          <th class="text-right"><font color="white">Actions</font></th>
+                          <th class="text-center"><font color="black"><b>Uid</b></font></th>
+                          <th><font color="black"><b>Name</font></b></th>
+                          <th><font color="black"><b>Abuse Uid</b></font></th>
+                          <th><font color="black"><b>Abuse Uname</b></font></th>
+                          <th class="text-right"><font color="black"><b>Actions</b></font></th>
  
                         </tr>
                       </thead>
@@ -153,10 +153,10 @@
                                   <form method="post">
                                   <tbody>
                                   <tr>
-                                    <td class="text-center"><font color="info">'.$num1['uid'].'</td>
-                                    <td><font color="yellow">'.$num1['uname'].'</td>
-                                    <td><font color="info">'.$num1['auid'].'</td>
-                                    <td><font color="yellow">'.$num1['auname'].'</td>
+                                    <td class="text-center"><font color="purple" style="font-weight:bold;"><b>'.$num1['uid'].'.</td>
+                                    <td><font color="blue" style="font-weight:bold;">'.$num1['uname'].'</td>
+                                    <td><font color="purple" style="font-weight:bold;">'.$num1['auid'].'</td>
+                                    <td><font color="blue" style="font-weight:bold;">'.$num1['auname'].'</td>
                                     <td class="td-actions text-right">
                                       <input type="hidden" name="report" value="'.$num1['report'].'" >
                                       <button type="submit" name="submit"  rel="tooltip" class="btn btn-info">

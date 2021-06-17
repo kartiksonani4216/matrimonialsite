@@ -45,8 +45,10 @@
         }
         if($action == 7)
         {
+          // header("location:umail/smtp.php");
+      
           header("location:../dashboard.php");
-
+            
         }
       }
     }
@@ -103,6 +105,7 @@
               if($action == 7)
               {
                   $msg="<b><u>   ". $n2['fname'] ."</u></b>". "Login SuccessFully.....";
+                  // header("refresh:3;url=umail/smtp.php");
                   header("refresh:2;url=../dashboard.php");
               }
             
@@ -110,13 +113,13 @@
           }
           else
           {
-            $error="Password Does Not Match .....Please Enter Correct Password....";
+            $error="Password Does Not Match..";
           }
         }
       }
       else
       {
-        $error="Provide Email Does Not Exist..Or..Your Account Is Blocked By Admin";
+        $error="Email Is'nt Exist..Or..Your Account Is Blocked";
       }
     }
   }
@@ -211,7 +214,7 @@ if($error)
   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
     <div class="container">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="javascript:;">Login Page</a>
+        <a class="navbar-brand" href="">Login Page</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
@@ -219,24 +222,9 @@ if($error)
         <span class="navbar-toggler-icon icon-bar"></span>
         <span class="navbar-toggler-icon icon-bar"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav">
-         
-          <li class="nav-item ">
-            <a href="user_register.php" class="nav-link">
-              <i class="material-icons">person_add</i>
-              Register
-            </a>
-          </li>
-          <li class="nav-item  active ">
-            <a href="login.html" class="nav-link">
-              <i class="material-icons">fingerprint</i>
-              Login
-            </a>
-          </li>
-         
-        </ul>
-      </div>
+         <?php
+               include 'login_navbar.php';
+         ?>
     </div>
   </nav>
   <!-- End Navbar -->
@@ -251,13 +239,13 @@ if($error)
                 <div class="card-header card-header-rose text-center">
                   <h4 class="card-title">Login</h4>
                   <div class="social-line">
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                    <a  class="btn btn-just-icon btn-link btn-white">
                       <i class="fa fa-facebook-square"></i>
                     </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                    <a class="btn btn-just-icon btn-link btn-white">
                       <i class="fa fa-twitter"></i>
                     </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                    <a  class="btn btn-just-icon btn-link btn-white">
                       <i class="fa fa-google-plus"></i>
                     </a>
                   </div>
@@ -292,6 +280,7 @@ if($error)
                       <i class="material-icons"></i>  <b>Submit</b>
                   </button><br><br>
                   <a href="forgot.php"><font color="red"> Forgot Password </font></a>
+                  
                     </div>
                     </div><br><br>
               </div>

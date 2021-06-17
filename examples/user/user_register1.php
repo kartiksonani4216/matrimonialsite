@@ -4,7 +4,10 @@ session_start();
 $error=FALSE;
 $msg=FALSE;
 $uname="";
+
 $uid=$_SESSION['uid'];
+  
+
 if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['email']))
 {
   $uid1=$_SESSION['uid'];
@@ -47,6 +50,9 @@ if(isset($_SESSION['fname']) && isset($_SESSION['uid']) && isset($_SESSION['emai
       }
     }
   }
+}
+else{
+  header("location:user_login.php");
 }
 if(isset($_POST['submit']))
 {

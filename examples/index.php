@@ -74,11 +74,10 @@ if(isset($_SESSION['uname']) && isset($_SESSION['uid']) && isset($_SESSION['uema
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../assets/img/favicon2.png" />
 </head>
-
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center auth lock-full-bg">
+            <div class="content-wrapper d-flex align-items-center auth" style="background-image: url('../assets/img/login.jpg'); background-size: cover; background-position: top center;">
                 <div class="row w-100">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-transparent text-left p-5 text-center">
@@ -87,8 +86,8 @@ if(isset($_SESSION['uname']) && isset($_SESSION['uid']) && isset($_SESSION['uema
                             <img src=""
                                     style="height:200;width:500px;margin-right:150px;padding-right:150px;">
                             </div>
-                            <button type="button" class="btn btn-info" style="height:50px;width:150px;opacity:0.4;"><a href="user/user_register.php" style="color:black;font-size:21px;text-decoration:none;" >Register</a></button>
-                            <button type="button" class="btn btn-warning"  style="height:50px;width:150px;opacity:0.4;"><a href="user/user_login.php" style="color:black;font-size:21px;text-decoration:none;">Login</a></button>
+                            <button type="button" class="btn btn-danger" style="height:50px;width:150px;opacity:0.8;"><a href="user/user_register.php" style="color:black;font-size:21px;text-decoration:none;" >Register</a></button>
+                            <button type="button" class="btn btn-warning"  style="height:50px;width:150px;opacity:0.8;"><a href="user/user_login.php" style="color:black;font-size:21px;text-decoration:none;">Login</a></button>
                         </div>
                     </div>
                 </div>

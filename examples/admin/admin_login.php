@@ -146,7 +146,12 @@ if($error)
               Login
             </a>
           </li>
-         
+          <li class="nav-item ">
+            <a href="../user/user_login.php" class="nav-link">
+              <i class="material-icons">login</i>
+              User Login
+            </a>
+          </li>
         </ul>
       </div>
     </div>
